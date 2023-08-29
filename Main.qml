@@ -6,8 +6,8 @@ import QtQuick.Controls.Material
 
 Window { // or maybe ApplicationWindow & header?
     id: root
-    width: 640
-    height: 480
+    width: 480
+    height: 640
     visible: true
     color: Material.background
     title: qsTr("Harmonics Practice")
@@ -43,6 +43,7 @@ Window { // or maybe ApplicationWindow & header?
             id: harmonicsArea
 
             Layout.fillHeight: true
+            Layout.preferredHeight: mainColumn.height*0.6
             Layout.fillWidth: true
 
             Rectangle {
@@ -55,7 +56,9 @@ Window { // or maybe ApplicationWindow & header?
         Item {
             id: controlArea
             Layout.fillWidth: true
-            Layout.preferredHeight: 120
+            Layout.preferredHeight: optionsFlow.height + 40
+            Layout.minimumHeight: volumeDial.height + volumeLabel.height
+            Layout.fillHeight: true
 
             ColumnLayout {
                 id: volumeColumn
@@ -64,6 +67,7 @@ Window { // or maybe ApplicationWindow & header?
 
                 Dial {
                     id: volumeDial
+                    //Layout.preferredHeight: 30
                     from: 0.0
                     to: 1.0
                     stepSize: 0.01
@@ -74,8 +78,10 @@ Window { // or maybe ApplicationWindow & header?
                 }
 
                 Label {
-                    horizontalAlignment: Text.AlignHCenter
+                    id: volumeLabel
+                    horizontalAlignment: Text.AlignHCenter | Text.AlignTop
                     Layout.alignment: Qt.AlignHCenter
+                    //Layout.fillHeight: true
                     text: qsTr("Volume")
 
                 }
@@ -84,11 +90,11 @@ Window { // or maybe ApplicationWindow & header?
 
 
             Flow {
+                id: optionsFlow
                 spacing: 10
                 anchors.left: volumeColumn.right
                 anchors.right: parent.right
-                height: parent.height
-                //columns: 4
+                anchors.leftMargin: 10
 
                 Row {
                     spacing: 5
@@ -97,7 +103,8 @@ Window { // or maybe ApplicationWindow & header?
 
                     ComboBox {
                         id: noteComboBox
-                        width: 60
+                        width: 80
+                        //scale: 0.5
 
                         model: ["C", "C#", "D" ]
 
@@ -115,7 +122,7 @@ Window { // or maybe ApplicationWindow & header?
 
                     ComboBox {
                         id: octaveComboBox
-                        width: 60
+                        width: 80
 
                         model: ["0", "1", "2", "3", "4" ]
 
