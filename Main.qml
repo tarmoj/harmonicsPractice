@@ -39,6 +39,21 @@ Window { // or maybe ApplicationWindow & header?
 
         }
 
+        Row {
+            spacing: 10
+
+            Label {text:qsTr("All: ")}
+
+            Button { text: qsTr("ON"); }
+
+            Button { text: qsTr("OFF"); }
+
+            Button { text: qsTr("Auto"); checkable: true}
+
+            Button { text: qsTr("Bumps"); checkable: true}
+
+        }
+
         Item {
             id: harmonicsArea
 
@@ -48,8 +63,28 @@ Window { // or maybe ApplicationWindow & header?
 
             Rectangle {
                 anchors.fill: parent
-                color: "darkgrey"
+                color: "#292a36"
             }
+
+            Row {
+
+                anchors.fill: parent
+
+                Repeater {
+                    id: harmonicsRepeater
+                    model: 16
+
+                    HarmonicBox {
+                        required property int index
+                        width: harmonicsArea.width/16
+                        height: parent.height
+                        harmonicNumber: index+1
+                    }
+                }
+
+            }
+
+
 
         }
 
