@@ -3,6 +3,7 @@ import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Controls.Material
+import QtQuick.Dialogs
 
 Window { // or maybe ApplicationWindow & header?
     id: root
@@ -34,23 +35,78 @@ Window { // or maybe ApplicationWindow & header?
             RoundButton {
                 id: helpButton
                 Layout.alignment: Qt.AlignRight
-                text: qsTr("Help")
+                text: "?"
+                onClicked: helpDialog.open()
             }
 
         }
 
-        Row {
+        MessageDialog {
+            id: helpDialog
+            buttons: MessageDialog.Ok
+
+            text: qsTr(`HarmonicsPractice
+
+                       ... is ...
+
+                       Built using Csound sound engine and Qt framework<br>
+                       <br>
+                       (c) Tarmo Johannes
+                        `)
+        }
+
+        Flow {
             spacing: 10
+            Layout.fillWidth: true
 
             Label {text:qsTr("All: ")}
 
-            Button { text: qsTr("ON"); }
+            Button {
+                text: qsTr("ON");
 
-            Button { text: qsTr("OFF"); }
+                onClicked:  {
+                    console.log("Count:", harmonicsRepeater.count );
 
-            Button { text: qsTr("Auto"); checkable: true}
+                    for (let i=0; i<harmonicsRepeater.count; i++ ) {
+                        harmonicsRepeater.itemAt(i).level = 0.6
+                    }
+                }
+            }
 
-            Button { text: qsTr("Bumps"); checkable: true}
+            Button {
+                text: qsTr("OFF");
+
+                onClicked:  {
+                    for (let i=0; i<harmonicsRepeater.count; i++ ) {
+                        harmonicsRepeater.itemAt(i).level = 0
+                    }
+                }
+            }
+
+            Button {
+                text: qsTr("Auto");
+                checkable: true
+
+
+                onCheckedChanged:  {
+
+                    for (let i=0; i<harmonicsRepeater.count; i++ ) {
+                        harmonicsRepeater.itemAt(i).autoLevel = checked
+                    }
+                }
+            }
+
+            Button {
+                text: qsTr("Bumps");
+                checkable: true
+
+                onCheckedChanged:  {
+                    console.log("Checked", checked)
+                    for (let i=0; i<harmonicsRepeater.count; i++ ) {
+                        harmonicsRepeater.itemAt(i).bumps = checked
+                    }
+                }
+            }
 
         }
 
@@ -98,29 +154,29 @@ Window { // or maybe ApplicationWindow & header?
             ColumnLayout {
                 id: volumeColumn
 
-                height: parent. height
+                //height: parent. height
 
                 Dial {
                     id: volumeDial
+
+                    //Layout.preferredWidth: 30
                     //Layout.preferredHeight: 30
+
                     from: 0.0
                     to: 1.0
                     stepSize: 0.01
 
                     onValueChanged: {
-                        console.log("Volume: ", value)
+                        //console.log("Volume: ", value)
                     }
                 }
 
                 Label {
                     id: volumeLabel
-                    horizontalAlignment: Text.AlignHCenter | Text.AlignTop
+                    horizontalAlignment: Text.AlignTop
                     Layout.alignment: Qt.AlignHCenter
-                    //Layout.fillHeight: true
                     text: qsTr("Volume")
-
                 }
-
             }
 
 
@@ -131,33 +187,35 @@ Window { // or maybe ApplicationWindow & header?
                 anchors.right: parent.right
                 anchors.leftMargin: 10
 
-                Row {
+                RowLayout {
                     spacing: 5
 
-                    Label { text: qsTr("Fundamental:")}
+                    Label {
+                        text: qsTr("Fundamental:");
+                        Layout.alignment: Qt.AlignVCenter
+                    }
 
                     ComboBox {
                         id: noteComboBox
-                        width: 80
-                        //scale: 0.5
+                        Layout.preferredWidth: 80
 
-                        model: ["C", "C#", "D" ]
+                        model: ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "Bb", "B" ]
 
                         onAccepted: {
-                            console.log("Chose: ", currentText)
+                            console.log("Chose: ", currentText, currentIndex)
                         }
                     }
 
                 }
 
-                Row {
+                RowLayout {
                     spacing: 5
 
-                    Label { text: qsTr("Octave")}
+                    Label { text: qsTr("Octave"); Layout.alignment: Qt.AlignVCenter;}
 
                     ComboBox {
                         id: octaveComboBox
-                        width: 80
+                        Layout.preferredWidth: 80
 
                         model: ["0", "1", "2", "3", "4" ]
 
@@ -167,10 +225,10 @@ Window { // or maybe ApplicationWindow & header?
                     }
                 }
 
-                Row {
+                RowLayout {
                     spacing: 5
 
-                    Label { text: qsTr("Tuning")}
+                    Label { text: qsTr("Tuning"); Layout.alignment: Qt.AlignVCenter}
 
                     SpinBox {
                         id: tuningSpinBox

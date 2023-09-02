@@ -10,7 +10,8 @@ Item {
 
     property int harmonicNumber: 1
     property double level: 0.6
-    property bool autoLevel: false
+    property alias autoLevel: autoModeButton.checked
+    property alias bumps: bumpsButton.checked
 
 
     ColumnLayout {
@@ -37,7 +38,17 @@ Item {
                 anchors.bottomMargin: parent.border.width
                 anchors.leftMargin: parent.border.width
 
-                color: autoLevel ? "aquamarine" : "green"
+                color: autoLevel ? "darkmagenta" : "green"
+                gradient: Gradient {
+                    GradientStop {
+                        position: 0.00;
+                        color: levelRect.color.lighter(1+level);
+                    }
+                    GradientStop {
+                        position: 1.00;
+                        color: levelRect.color.darker(4);
+                    }
+                }
 
                 Behavior on height {
                     NumberAnimation { duration: 20 }
@@ -56,7 +67,9 @@ Item {
                  }
 
                  onMouseYChanged: {
-                     setLevel(mouseY)
+                     if (!autoLevel && mouseY>0) {
+                        setLevel(mouseY)
+                     }
                  }
             }
         }
