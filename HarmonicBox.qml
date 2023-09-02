@@ -83,20 +83,26 @@ Item {
         ToolButton {
             id: autoModeButton
             Layout.maximumWidth: meterItem.width
-            //Layout.maximumHeight: meterItem.width
 
-            //Layout.fillWidth: true
             text: "A"
             checkable: true
+
+            onCheckedChanged: {
+                if (!checked && bumpsButton.checked) { // bumps out when auto is out
+                    bumpsButton.checked = false
+                }
+            }
         }
 
         ToolButton {
             id: bumpsButton
-
             Layout.maximumWidth: meterItem.width
             //Layout.maximumHeight: meterItem.width
-            text: "B"
             checkable: true
+            enabled: autoModeButton.checked
+
+            text: "B"
+
         }
 
 
