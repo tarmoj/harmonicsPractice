@@ -43,6 +43,7 @@ instr Controller
 	gkVolume *= 1/sqrt(giHarmonicsCount)
 endin
 
+schedule "Start", 0, 0
 instr Start
 	iHarmonic = 1
 loopLabel:
@@ -115,6 +116,8 @@ endin
 <CsScore>
 </CsScore>
 </CsoundSynthesizer>
+
+
 
 
 

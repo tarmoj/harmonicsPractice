@@ -16,11 +16,9 @@ CsEngine::CsEngine(QObject *parent) : QObject(parent)
 #ifdef Q_OS_ANDROID
 	cs = new AndroidCsound();
 	cs->setOpenSlCallbacks(); // for android audio to work
-    cs->SetOption("--env:SSDIR=/sdcard/Music/Bourdon/samples/");
 
 # else
 	cs = new Csound();
-    cs->SetOption("--env:SSDIR=/home/tarmo/tarmo/programm/bourdon/bourdon-app2/samples/");
 #endif
     mStop=false;
 	cs->SetOption("-odac");
@@ -34,7 +32,7 @@ CsEngine::~CsEngine()
 
 void CsEngine::play() {
 
-    if (!open(":/bourdon.csd")) {
+    if (!open(":/harmonicsPractice.csd")) {
 		cs->Start();
         //cs->Perform();
 		while(cs->PerformKsmps()==0 && mStop==false ) {

@@ -13,8 +13,17 @@ Window { // or maybe ApplicationWindow & header?
     color: Material.background
     title: qsTr("Harmonics Practice")
 
-    Material.theme: Material.Dark
-    Material.primary: "yellow"
+//    Material.theme: Material.Dark
+//    Material.primary: "yellow"
+
+
+    Connections {
+            target: Application
+            function onAboutToQuit() {
+                console.log("Bye!")
+                csound.stop();
+            }
+        }
 
     // see more on controlling Material: https://doc.qt.io/qt-6/qtquickcontrols-material.html#material-theme-attached-prop
 
@@ -168,6 +177,7 @@ Window { // or maybe ApplicationWindow & header?
 
                     onValueChanged: {
                         //console.log("Volume: ", value)
+                        csound.setChannel("volunme", value)
                     }
                 }
 

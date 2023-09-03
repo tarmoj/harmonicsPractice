@@ -9,7 +9,7 @@ Item {
     height: 400
 
     property int harmonicNumber: 1
-    property double level: 0.6
+    property double level: 0
     property alias autoLevel: autoModeButton.checked
     property alias bumps: bumpsButton.checked
 
@@ -63,12 +63,12 @@ Item {
                      //console.log("y, relative: ", y, newLevel)
                      levelRect.height = meterRect.height * newLevel
                      meterItem.level = newLevel
-                     //csound.setChannel(....)
+                     csound.setChannel("h"+harmonicNumber, newLevel)
                  }
 
                  onMouseYChanged: {
                      if (!autoLevel && mouseY>0) {
-                        setLevel(mouseY)
+                        setLevel(mouseY) 
                      }
                  }
             }
@@ -91,6 +91,7 @@ Item {
                 if (!checked && bumpsButton.checked) { // bumps out when auto is out
                     bumpsButton.checked = false
                 }
+                csound.setChannel("auto"+harmonicNumber, checked ? 1 : 0)
             }
         }
 
@@ -102,6 +103,10 @@ Item {
             enabled: autoModeButton.checked
 
             text: "B"
+
+            onCheckedChanged: {
+                csound.setChannel("bumps"+harmonicNumber, checked ? 1 : 0)
+            }
 
         }
 
