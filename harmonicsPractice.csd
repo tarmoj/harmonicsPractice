@@ -37,7 +37,7 @@ gkVolume init 0.6
 chn_k "level", 1
 chnset 0.8, "volume"
 
-alwayson "Controller"
+schedule "Controller", 0, -1
 instr Controller
 	gkVolume lag chnget:k("volume"), 0.05
 	gkVolume *= 1/sqrt(giHarmonicsCount)
@@ -449,7 +449,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.65215166</yValue>
+  <yValue>0.51081506</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -585,7 +585,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.42500000</yValue>
+  <yValue>0.74500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -721,7 +721,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.43500000</yValue>
+  <yValue>0.63500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>

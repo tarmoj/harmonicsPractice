@@ -177,7 +177,7 @@ Window { // or maybe ApplicationWindow & header?
 
                     onValueChanged: {
                         //console.log("Volume: ", value)
-                        csound.setChannel("volunme", value)
+                        csound.setChannel("volume", value)
                     }
                 }
 

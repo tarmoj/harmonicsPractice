@@ -70,7 +70,7 @@ void CsEngine::stop()
 
 void CsEngine::setChannel(const QString &channel, MYFLT value)
 {
-    qDebug()<<"setChannel "<<channel<<" value: "<<value;
+    //qDebug()<<"setChannel "<<channel<<" value: "<<value;
     cs->SetChannel(channel.toLocal8Bit(), value);
 }
 
@@ -85,5 +85,19 @@ void CsEngine::readScore(const QString &scoreLine)
 
 void CsEngine::compileOrc(const QString &code)
 {
-	cs->CompileOrc(code.toLocal8Bit());
+    cs->CompileOrc(code.toLocal8Bit());
+}
+
+double CsEngine::getChannel(const QString &channel)
+{
+    if (cs) {
+        int error;
+        double value = cs->GetChannel(channel.toLocal8Bit(), &error);
+        //qDebug() << "Error code: " << error; // 0 is OK
+        return value;
+
+    } else {
+        return 0;
+    }
+
 }

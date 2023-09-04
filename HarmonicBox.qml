@@ -10,9 +10,21 @@ Item {
 
     property int harmonicNumber: 1
     property double level: 0
+    property string levelChannel: "h"+harmonicNumber
     property alias autoLevel: autoModeButton.checked
     property alias bumps: bumpsButton.checked
 
+
+    Timer {
+        id: getChannelTimer
+        interval: 10
+        repeat:true
+
+        onTriggered: {
+            const value = csound.getChannel(levelChannel)
+            meterItem.level = Math.min(value,1.0);
+        }
+    }
 
     ColumnLayout {
         id: mainLayout
@@ -59,7 +71,9 @@ Item {
                  anchors.fill: parent
 
                  function setLevel(y) {
-                     const newLevel = (meterRect.height-y)/ meterRect.height
+                     let newLevel =    (meterRect.height-y)/ meterRect.height
+                     if (newLevel<0 ) newLevel = 0;
+                     if (newLevel>1 ) newLevel = 1;
                      //console.log("y, relative: ", y, newLevel)
                      levelRect.height = meterRect.height * newLevel
                      meterItem.level = newLevel
@@ -92,6 +106,12 @@ Item {
                     bumpsButton.checked = false
                 }
                 csound.setChannel("auto"+harmonicNumber, checked ? 1 : 0)
+
+                if (checked) {
+                    getChannelTimer.start()
+                } else {
+                    getChannelTimer.stop()
+                }
             }
         }
 

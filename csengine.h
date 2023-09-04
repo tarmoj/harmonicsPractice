@@ -29,7 +29,7 @@ public slots:
     void readScore(const QString &event);
     void compileOrc(const QString &code);
 
-	//Q_INVOKABLE double getChannel(const char *channel);
+    Q_INVOKABLE double getChannel(const QString &channel);
 
 private:
     bool mStop;
