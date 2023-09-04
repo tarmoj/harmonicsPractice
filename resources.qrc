@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
         <file>harmonicsPractice.csd</file>
+        <file>Main.qml</file>
+        <file>HarmonicBox.qml</file>
     </qresource>
 </RCC>
