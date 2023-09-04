@@ -28,7 +28,6 @@ Item {
 
     onLevelChanged: {
         if (!autoLevel) {
-            console.log("Set Level ", levelChannel, level)
             csound.setChannel(levelChannel, level)
         }
     }

@@ -27,6 +27,14 @@ Window { // or maybe ApplicationWindow & header?
 
     // see more on controlling Material: https://doc.qt.io/qt-6/qtquickcontrols-material.html#material-theme-attached-prop
 
+
+    function setBaseNote() {
+        const pitch = ( parseInt(octaveComboBox.currentText)+4 + noteComboBox.currentIndex/100).toFixed(2)
+        console.log("New pitch: ", pitch);
+        csound.compileOrc(`gkBaseFreq init cpspch(${pitch})`);
+    }
+
+
     ColumnLayout {
         id: mainColumn
         anchors.fill: parent
@@ -174,6 +182,7 @@ Window { // or maybe ApplicationWindow & header?
                     from: 0.0
                     to: 1.0
                     stepSize: 0.01
+                    value: 0.6
 
                     onValueChanged: {
                         //console.log("Volume: ", value)
@@ -208,11 +217,13 @@ Window { // or maybe ApplicationWindow & header?
                     ComboBox {
                         id: noteComboBox
                         Layout.preferredWidth: 80
+                        currentIndex: 0
 
                         model: ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "Bb", "B" ]
 
-                        onAccepted: {
+                        onCurrentValueChanged: {
                             console.log("Chose: ", currentText, currentIndex)
+                            setBaseNote()
                         }
                     }
 
@@ -226,11 +237,13 @@ Window { // or maybe ApplicationWindow & header?
                     ComboBox {
                         id: octaveComboBox
                         Layout.preferredWidth: 80
+                        currentIndex: 2
 
                         model: ["0", "1", "2", "3", "4" ]
 
-                        onAccepted: {
+                        onCurrentValueChanged: {
                             console.log("Chose: ", currentIndex)
+                            setBaseNote()
                         }
                     }
                 }
@@ -247,9 +260,11 @@ Window { // or maybe ApplicationWindow & header?
                         to: 500
                         value: 442
                         stepSize: 1
+                        editable: true
 
                         onValueChanged:  {
                             console.log("Tuning: ", value)
+                            csound.setChannel("a4", value)
                         }
                     }
 
