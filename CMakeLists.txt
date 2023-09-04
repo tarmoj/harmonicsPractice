@@ -10,8 +10,9 @@ find_package(Qt6 6.2 REQUIRED COMPONENTS Quick)
 
 # For Linux: others, see Cabbage example: https://github.com/rorywalsh/cabbage/blob/develop/CMakeLists.txt
 
-include_directories("/usr/local/include/csound")
-find_library(CSOUND_LIBRARY NAMES csound64)
+
+# Android build fails....
+
 
 qt_add_executable(appharmonics-practice
     main.cpp
@@ -26,6 +27,51 @@ qt_add_qml_module(appharmonics-practice
     QML_FILES HarmonicBox.qml
 )
 
+target_link_libraries(appharmonics-practice
+    PRIVATE Qt6::Quick
+)
+
+
+if(MSVC)
+
+elseif(APPLE)
+
+elseif(ANDROID)
+
+    target_include_directories(appharmonics-practice PRIVATE
+        /home/tarmo/src/csound/Android/CsoundAndroid/jni
+    )
+
+    target_sources(appharmonics-practice PUBLIC
+        AndroidCsound.hpp
+    )
+
+
+
+    target_link_libraries(appharmonics-practice PRIVATE
+        # Remove: L/home/tarmo/src/csound-android-6.18.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/
+        #Qt::CorePrivate
+        c++_shared
+        csoundandroid
+        sndfile
+    )
+else()
+    include_directories("/usr/local/include/csound")
+    find_library(CSOUND_LIBRARY NAMES csound64)
+
+    target_link_libraries(appharmonics-practice
+        ${CSOUND_LIBRARY}
+    )
+endif()
+
+
+if(ANDROID)
+    set_property(TARGET appharmonics-practice APPEND PROPERTY
+        QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android
+    )
+endif()
+
+
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
@@ -37,10 +83,7 @@ set_target_properties(appharmonics-practice PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_link_libraries(appharmonics-practice
-    PRIVATE Qt6::Quick
-    ${CSOUND_LIBRARY}
-)
+
 
 include(GNUInstallDirs)
 install(TARGETS appharmonics-practice
