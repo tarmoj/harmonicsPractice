@@ -20,6 +20,8 @@ chn_k "bumps4",3
 chn_k "atacksAllowed",3
 chn_k "volume",3
 
+chn_k "a4",3
+
 // chnexport Sname, imode[, itype, idflt, imin, imax]) -  maybe for attacks
 
 ;CONSTANTS: -----------------------
@@ -35,7 +37,8 @@ gkVolume init 0.6
 ; CHANNELS: ----------
 
 chn_k "level", 1
-chnset 0.8, "volume"
+chnset 0.6, "volume"
+chnset A4, "a4"
 
 schedule "Controller", 0, -1
 instr Controller
@@ -97,7 +100,9 @@ instr PlayHarmonic
 	; test	
 	;kLevel = 0.3
 	
-	aSine oscili linenr:a(kLevel, 0.5, 0.5, 0.01)*gkVolume , gkBaseFreq * iHarmonic
+	kTuning = chnget:k("a4")/A4
+	
+	aSine oscili linenr:a(kLevel, 0.5, 0.5, 0.01)*gkVolume , gkBaseFreq * iHarmonic * kTuning
 	
 	; TODO: Harm 1 -  center, 2 0.5+something, 3 0,5-something etc
 	;iPosition = index/giHarmonicsCount
@@ -449,7 +454,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.51081506</yValue>
+  <yValue>0.72028724</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -857,7 +862,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.46000000</yValue>
+  <yValue>0.88000000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -993,7 +998,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.49000000</yValue>
+  <yValue>0.80000000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -3837,6 +3842,36 @@ endin
   <label/>
   <pressedValue>1</pressedValue>
   <randomizable group="0">false</randomizable>
+ </bsbObject>
+ <bsbObject type="BSBSpinBox" version="2">
+  <objectName>a4</objectName>
+  <x>249</x>
+  <y>20</y>
+  <width>80</width>
+  <height>25</height>
+  <uuid>{8e8e241f-3f6c-43a1-9d5a-427c0c7e33f0}</uuid>
+  <visible>true</visible>
+  <midichan>0</midichan>
+  <midicc>0</midicc>
+  <description/>
+  <alignment>left</alignment>
+  <font>Liberation Sans</font>
+  <fontsize>10</fontsize>
+  <color>
+   <r>0</r>
+   <g>0</g>
+   <b>0</b>
+  </color>
+  <bgcolor mode="nobackground">
+   <r>255</r>
+   <g>255</g>
+   <b>255</b>
+  </bgcolor>
+  <resolution>1.00000000</resolution>
+  <minimum>400</minimum>
+  <maximum>500</maximum>
+  <randomizable group="0">false</randomizable>
+  <value>400</value>
  </bsbObject>
 </bsbPanel>
 <bsbPresets>

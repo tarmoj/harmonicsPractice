@@ -26,6 +26,13 @@ Item {
         }
     }
 
+    onLevelChanged: {
+        if (!autoLevel) {
+            console.log("Set Level ", levelChannel, level)
+            csound.setChannel(levelChannel, level)
+        }
+    }
+
     ColumnLayout {
         id: mainLayout
         anchors.fill: parent
@@ -77,7 +84,6 @@ Item {
                      //console.log("y, relative: ", y, newLevel)
                      levelRect.height = meterRect.height * newLevel
                      meterItem.level = newLevel
-                     csound.setChannel("h"+harmonicNumber, newLevel)
                  }
 
                  onMouseYChanged: {
