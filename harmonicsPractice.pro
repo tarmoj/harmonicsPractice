@@ -14,19 +14,22 @@ HEADERS += \
 
 RESOURCES += resources.qrc
 
-INCLUDEPATH += /usr/local/include/csound/
+# this is correct only for linux, later add a condition
+
+INCLUDEPATH += /home/tarmo/src/csound-6.12.2/include/ /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/
 
 
 android {
-  #QT += core-private
-  INCLUDEPATH += /home/tarmo/src/csound/Android/CsoundAndroid/jni/	 #TODO: should have an extra varaible, not hardcoded personal library
-  HEADERS += AndroidCsound.hpp
-  LIBS +=  -L/home/tarmo/src/csound-android-6.18.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/ -lcsoundandroid -lsndfile -lc++_shared
-}
 
-linux:!android {
+  HEADERS += AndroidCsound.hpp
+  LIBS +=  -L/home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/ -lcsoundandroid -lsndfile -lc++_shared #-loboe
+
+} else: win32|unix {
+  INCLUDEPATH += /usr/local/include/csound/
+
   LIBS += -lcsound64 -lsndfile
 }
+
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -41,7 +44,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 contains(ANDROID_TARGET_ARCH,arm64-v8a) {
     ANDROID_EXTRA_LIBS = \
-        /home/tarmo/src/csound-android-6.18.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libsndfile.so \
-        /home/tarmo/src/csound-android-6.18.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libcsoundandroid.so \
-        /home/tarmo/src/csound-android-6.18.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libc++_shared.so
+        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libsndfile.so \
+        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libcsoundandroid.so \
+        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libc++_shared.so
 }

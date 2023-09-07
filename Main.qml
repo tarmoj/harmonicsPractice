@@ -70,13 +70,21 @@ Window { // or maybe ApplicationWindow & header?
                        <br>
                        (c) Tarmo Johannes
                         `)
+
+            onButtonClicked: function (button, role) { // does not close on Android otherwise
+                switch (button) {
+                case MessageDialog.Ok:
+                    helpDialog.close()
+                }
+            }
         }
 
         Flow {
             spacing: 10
             Layout.fillWidth: true
+            scale: 0.8
 
-            Label {text:qsTr("All: ")}
+            Label {text:qsTr("All: ");  }
 
             Button {
                 text: qsTr("ON");

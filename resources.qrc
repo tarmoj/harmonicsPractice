@@ -4,5 +4,6 @@
         <file>harmonicsPractice.csd</file>
         <file>Main.qml</file>
         <file>HarmonicBox.qml</file>
+        <file>LabelButton.qml</file>
     </qresource>
 </RCC>

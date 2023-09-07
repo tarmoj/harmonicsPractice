@@ -21,7 +21,8 @@ Item {
         repeat:true
 
         onTriggered: {
-            const value = csound.getChannel(levelChannel)
+            const value = csound.getChannel(levelChannel) // does not work on Android...
+            //console.log("getChannel in qml: ", value)
             meterItem.level = Math.min(value,1.0);
         }
     }
@@ -99,12 +100,12 @@ Item {
             text: harmonicNumber
         }
 
-        ToolButton {
+        LabelButton {
             id: autoModeButton
-            Layout.maximumWidth: meterItem.width
+            Layout.alignment: Qt.AlignHCenter
 
             text: "A"
-            checkable: true
+            //checkable: true
 
             onCheckedChanged: {
                 if (!checked && bumpsButton.checked) { // bumps out when auto is out
@@ -120,11 +121,11 @@ Item {
             }
         }
 
-        ToolButton {
+        LabelButton {
             id: bumpsButton
-            Layout.maximumWidth: meterItem.width
-            //Layout.maximumHeight: meterItem.width
-            checkable: true
+            Layout.alignment: Qt.AlignHCenter
+
+
             enabled: autoModeButton.checked
 
             text: "B"
