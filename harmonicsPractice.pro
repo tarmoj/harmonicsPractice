@@ -1,10 +1,28 @@
 lessThan(QT_MAJOR_VERSION,6): error("Qt6 is required for this build.")
 
+#TODO
+#Icon
+#Settings
+#Landscape layout
+#Move
+#AndroidManifest
+
 QT += quick core
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+
+VERSION = 0.1.0
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+
+
+#!NB use cmake to build for android qt Qt6! (supports multi-abi)
+ANDROID_VERSION_NAME = $$VERSION
+ANDROID_VERSION_CODE = 1 # build number
+#TARGET = "Harmonics\ Practice" # for %%INSERT_APP_NAME%% but that cannot include spaces.
+
 
 SOURCES += main.cpp \
         csengine.cpp
@@ -13,6 +31,8 @@ HEADERS += \
     csengine.h
 
 RESOURCES += resources.qrc
+
+DEFINES += USE_DOUBLE
 
 # this is correct only for linux, later add a condition
 
@@ -47,4 +67,7 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
         /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libsndfile.so \
         /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libcsoundandroid.so \
         /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libc++_shared.so
+
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
 }
