@@ -32,7 +32,7 @@ HEADERS += \
 
 RESOURCES += resources.qrc
 
-DEFINES += USE_DOUBLE
+#DEFINES += USE_DOUBLE # <- very strange! thi has to be commented out to work on Csound 6.12 (android)
 
 # this is correct only for linux, later add a condition
 
@@ -41,7 +41,7 @@ INCLUDEPATH += /home/tarmo/src/csound-6.12.2/include/ /home/tarmo/src/csound-6.1
 
 android {
 
-  HEADERS += AndroidCsound.hpp
+  HEADERS += /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/AndroidCsound.hpp
   LIBS +=  -L/home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/ -lcsoundandroid -lsndfile -lc++_shared #-loboe
 
 } else: win32|unix {
@@ -71,3 +71,5 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
 }
+
+message(Includepath: $$INCLUDEPATH Libs: $$LIBS)

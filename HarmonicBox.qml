@@ -22,7 +22,7 @@ Item {
 
         onTriggered: {
             const value = csound.getChannel(levelChannel) // does not work on Android...
-            //console.log("getChannel in qml: ", value)
+            console.log("getChannel in qml: ", value)
             meterItem.level = Math.min(value,1.0);
         }
     }
