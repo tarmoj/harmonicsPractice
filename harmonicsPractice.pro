@@ -1,7 +1,7 @@
 lessThan(QT_MAJOR_VERSION,6): error("Qt6 is required for this build.")
 
 #TODO
-#Icon
+
 #Settings
 #Landscape layout
 #Move

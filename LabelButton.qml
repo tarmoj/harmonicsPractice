@@ -26,7 +26,7 @@ Item {
 
 
             onEntered: {
-                background.color = Material.backgroundDimColor; // Change background color when hovered
+                background.color = Material.backgroundColor.lighter(); // Change background color when hovered
             }
 
             onExited: {

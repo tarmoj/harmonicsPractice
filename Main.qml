@@ -4,6 +4,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Controls.Material
 import QtQuick.Dialogs
+import QtCore
 
 Window { // or maybe ApplicationWindow & header?
     id: root
@@ -12,9 +13,6 @@ Window { // or maybe ApplicationWindow & header?
     visible: true
     color: Material.background
     title: qsTr("Harmonics Practice")
-
-//    Material.theme: Material.Dark
-//    Material.primary: "yellow"
 
 
     Connections {
@@ -34,6 +32,14 @@ Window { // or maybe ApplicationWindow & header?
         csound.compileOrc(`gkBaseFreq init cpspch(${pitch})`);
     }
 
+    Settings {
+        property alias note: noteComboBox.currentIndex
+        property alias octave: octaveComboBox.currentIndex
+        property alias volume: volumeDial.value
+        property alias tuning: tuningSpinBox.value
+
+
+    }
 
     ColumnLayout {
         id: mainColumn
@@ -43,13 +49,14 @@ Window { // or maybe ApplicationWindow & header?
         RowLayout {
             id:headerRow
             spacing: 5
-            //Layout.fillWidth: true
 
-            Label {text: root.title; font.bold: true; font.pointSize: 14}
+            Label {
+                text: root.title; font.bold: true; font.pointSize: 14
+            }
 
             Item {Layout.fillWidth: true}    // spacer
 
-            RoundButton {
+            ToolButton {
                 id: helpButton
                 Layout.alignment: Qt.AlignRight
                 text: "?"
@@ -84,7 +91,10 @@ Window { // or maybe ApplicationWindow & header?
             Layout.fillWidth: true
             scale: 0.8
 
-            Label {text:qsTr("All: ");  }
+            Label {
+                text:qsTr("All: ");
+                verticalAlignment: Qt.AlignVCenter
+            }
 
             Button {
                 text: qsTr("ON");
