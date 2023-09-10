@@ -89,14 +89,18 @@ Window { // or maybe ApplicationWindow & header?
         Flow {
             spacing: 10
             Layout.fillWidth: true
+            Layout.preferredHeight: onButton.implicitHeight
             scale: 0.8
 
             Label {
+                height: parent.height
                 text:qsTr("All: ");
                 verticalAlignment: Qt.AlignVCenter
             }
 
             Button {
+
+                id: onButton
                 text: qsTr("ON");
 
                 onClicked:  {

@@ -9,6 +9,10 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
+    app.setOrganizationName("Tarmo Johannes Events and Software");
+    app.setOrganizationDomain("harmonics.tarmmoj.org");
+    app.setApplicationName("Harmonics Practice");
+
 
     // move csound into another thread
     QThread  * csoundThread = new QThread();
