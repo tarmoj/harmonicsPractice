@@ -94,25 +94,20 @@ Window { // or maybe ApplicationWindow & header?
 
 
         Item {
-            id: controlsRow
+            id: buttonsRow
             anchors.top: headerRow.bottom
             width: parent.width
-            height: onButton.implicitHeight // Or Flow immeditately?
+            height: onButton.implicitHeight // Math.max(onButton.implicitHeight, buttonFlow.height)
 
-            Rectangle {anchors.fill: parent; color: "darkblue"}
+            //Rectangle {anchors.fill: parent; color: "darkblue"}
 
-
-//            Layout.fillWidth: true
-//            Layout.preferredHeight: onButton.implicitHeight
-//            Layout.fillHeight: true
 
             Flow {
+                id: buttonFlow
                 spacing: 10
-                anchors.fill: parent
-                //Layout.fillWidth: true
-                //Layout.preferredHeight: onButton.implicitHeight
-                //Layout.fillHeight: true
-                //scale: 0.8
+                width: parent.width
+
+                // onHeightChanged: console.log("flow height: ", height) // siin on mingi jama, aga las olla
 
                 Label {
                     height: parent.height
@@ -176,13 +171,9 @@ Window { // or maybe ApplicationWindow & header?
         Item {
             id: harmonicsArea
 
-            width: isLandscape ? parent.width - controlArea.width: parent.width // or maybe anchor changes in states.
-            anchors.top: controlsRow.bottom
+            width:  parent.width
+            anchors.top: buttonsRow.bottom
             anchors.bottom: isLandscape ? parent.bottom : controlArea.top
-//            Layout.fillHeight: true
-//            Layout.preferredHeight: mainColumn.height*0.6
-//            Layout.fillWidth: true
-
 
 
             Rectangle {
@@ -217,24 +208,15 @@ Window { // or maybe ApplicationWindow & header?
 
             width: parent.width
             anchors.bottom: parent.bottom
-            //anchors.top: isLandscape ? harmonicsArea.bottom :  harmonicsArea.bottom
             height: Math.max(volumeColumn.height, optionsFlow.height)
-            //anchors.left: isLandscape ? harmonicsArea.right : parent.left
-//            Layout.fillWidth: true
-//            Layout.preferredHeight: optionsFlow.height + 40
-//            Layout.minimumHeight: volumeDial.height + volumeLabel.height
-//            Layout.fillHeight: true
-
-            Rectangle {anchors.fill: parent; color: "darkgreen"}
 
 
-            // TODO: move volume down and other controls above it. Start bottom up.
             states: State {
                         name: "landscape"; when: isLandscape
 
                         PropertyChanges {
                             target: controlArea
-                            width:  tuningRow.width + 6
+                            width:  tuningRow.width + 12
                         }
 
                         AnchorChanges {
@@ -246,16 +228,16 @@ Window { // or maybe ApplicationWindow & header?
 
                         PropertyChanges {
                             target: volumeColumn
-                            //anchors.horizontalCenter: controlArea.horizontalCenter
                             width: parent.width
+                            anchors.bottom: parent.bottom
                         }
 
 
                         PropertyChanges {
                             target: optionsFlow
                             anchors.left: controlArea.left
-                            anchors.top: volumeColumn.bottom
-                            anchors.topMargin: 20
+                            anchors.bottom: volumeColumn.top
+                            anchors.bottomMargin: 20
                         }
 
                         PropertyChanges {
@@ -270,13 +252,14 @@ Window { // or maybe ApplicationWindow & header?
                 id: volumeColumn
 
                 anchors.topMargin: 5
+                //anchors.top: parent.top
+                anchors.bottom: parent.bottom  // still gives "cannot anchor to null"
+
 
 
                 Dial {
                     id: volumeDial
 
-//                    Layout.preferredHeight:  isLandscape ? noteComboBox.implicitHeight : implicitHeight
-//                    Layout.preferredWidth: Layout.preferredHeight
                     Layout.alignment: Qt.AlignHCenter
 
                     from: 0.0
@@ -299,9 +282,6 @@ Window { // or maybe ApplicationWindow & header?
                     Layout.topMargin: 5
                     Layout.alignment: Qt.AlignHCenter
                     text: qsTr("Volume")
-
-                    //Rectangle {anchors.fill: parent; color: "darkmagenta"}
-
                 }
             }
 
@@ -311,7 +291,10 @@ Window { // or maybe ApplicationWindow & header?
                 spacing: 10
                 anchors.left: volumeColumn.right
                 anchors.right: parent.right
-                anchors.top: parent.top
+                //anchors.top: parent.top
+                anchors.bottom: parent.bottom
+
+
                 anchors.leftMargin: 10
 
                 RowLayout {
@@ -391,7 +374,6 @@ Window { // or maybe ApplicationWindow & header?
                             csound.setChannel("move", checked ? 1 : 0);
                         }
                     }
-
 
                 }
 
