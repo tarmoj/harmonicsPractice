@@ -2,10 +2,8 @@ lessThan(QT_MAJOR_VERSION,6): error("Qt6 is required for this build.")
 
 #TODO
 
-#Settings
 #Landscape layout
 #Move
-#AndroidManifest
 
 QT += quick core
 

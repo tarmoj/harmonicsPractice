@@ -14,6 +14,8 @@ Window { // or maybe ApplicationWindow & header?
     color: Material.background
     title: qsTr("Harmonics Practice")
 
+    property bool isLandscape: root.width>root.height
+
 
     Connections {
             target: Application
@@ -289,6 +291,22 @@ Window { // or maybe ApplicationWindow & header?
                             csound.setChannel("a4", value)
                         }
                     }
+
+                }
+
+                RowLayout {
+                    spacing: 5
+
+                    Label { text: qsTr("Move"); Layout.alignment: Qt.AlignVCenter}
+
+                    CheckBox {
+                        id: moveCheckBox
+
+                        onCheckedChanged: {
+                            csound.setChannel("move", checked ? 1 : 0);
+                        }
+                    }
+
 
                 }
 

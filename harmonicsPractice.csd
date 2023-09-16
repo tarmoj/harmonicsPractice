@@ -6,13 +6,14 @@
 <CsInstruments>
 
 sr = 44100
-ksmps = 4
+ksmps = 32 ;4
 nchnls = 2
 0dbfs = 1
 
 A4 = 442
 
 ;;channels
+chn_k "move",3
 
 chn_k "h4",3
 chn_k "hor54",3
@@ -107,16 +108,32 @@ instr PlayHarmonic
 	
 	iTable = (iHarmonic==1) ? giWave : -1
 	
-	aSine oscili linenr:a(kLevel, 0.5, 0.5, 0.01)*gkVolume , gkBaseFreq * iHarmonic * kTuning, iTable
+	aSine oscili linenr:a(a(kLevel), 0.5, 0.5, 0.01)*gkVolume , gkBaseFreq * iHarmonic * kTuning, iTable
 	
 	; TODO: Harm 1 -  center, 2 0.5+something, 3 0,5-something etc
 	;iPosition = index/giHarmonicsCount
 	
-
+		
 	iPan = (iHarmonic==1) ? 0.5: 0.25 + 0.5*index/(giHarmonicsCount-1); all harmonics in 0.25..0.75
 	
+	kPan init iPan
+	
+	iMoveFreq = 1/random:i(8, 12)
+	if (chnget:k("move")>0) then
+		kPhase oscili 1, iMoveFreq, -1, iPan 	
+		kPan = abs( (kPhase+1)/2 )
+	endif
 		
-	aL, aR pan2 aSine, iPan
+	else
+		kPan = iPan
+	endif
+	
+	;kPan port kPan, 0.1, iPan
+	
+	
+	
+		
+	aL, aR pan2 aSine, kPan
 	
 	out aL, aR
 		
@@ -142,7 +159,7 @@ endin
  <x>0</x>
  <y>0</y>
  <width>1055</width>
- <height>803</height>
+ <height>491</height>
  <visible>true</visible>
  <uuid/>
  <bgcolor mode="nobackground">
@@ -154,8 +171,8 @@ endin
   <objectName/>
   <x>5</x>
   <y>341</y>
-  <width>350</width>
-  <height>150</height>
+  <width>353</width>
+  <height>226</height>
   <uuid>{8b12513e-4fb1-4969-bea1-137b912671e4}</uuid>
   <visible>true</visible>
   <midichan>0</midichan>
@@ -172,8 +189,8 @@ endin
  </bsbObject>
  <bsbObject version="2" type="BSBButton">
   <objectName>button85</objectName>
-  <x>14</x>
-  <y>67</y>
+  <x>6</x>
+  <y>4</y>
   <width>100</width>
   <height>30</height>
   <uuid>{91e10230-8b4f-42ae-b925-3ae4470a0ff4}</uuid>
@@ -191,56 +208,6 @@ endin
   <momentaryMidiButton>false</momentaryMidiButton>
   <latched>false</latched>
   <fontsize>10</fontsize>
- </bsbObject>
- <bsbObject version="2" type="BSBLabel">
-  <objectName/>
-  <x>7</x>
-  <y>37</y>
-  <width>80</width>
-  <height>25</height>
-  <uuid>{4bd987b1-4448-4562-93bf-c362b96f2c5c}</uuid>
-  <visible>true</visible>
-  <midichan>0</midichan>
-  <midicc>0</midicc>
-  <description/>
-  <label>Level:</label>
-  <alignment>left</alignment>
-  <valignment>top</valignment>
-  <font>Arial</font>
-  <fontsize>10</fontsize>
-  <precision>3</precision>
-  <color>
-   <r>0</r>
-   <g>0</g>
-   <b>0</b>
-  </color>
-  <bgcolor mode="nobackground">
-   <r>255</r>
-   <g>255</g>
-   <b>255</b>
-  </bgcolor>
-  <bordermode>noborder</bordermode>
-  <borderradius>1</borderradius>
-  <borderwidth>0</borderwidth>
- </bsbObject>
- <bsbObject version="2" type="BSBHSlider">
-  <objectName>level</objectName>
-  <x>104</x>
-  <y>38</y>
-  <width>144</width>
-  <height>21</height>
-  <uuid>{a73a01ce-f4c3-494c-9277-56500a25f7db}</uuid>
-  <visible>true</visible>
-  <midichan>0</midichan>
-  <midicc>0</midicc>
-  <description/>
-  <minimum>0.00000000</minimum>
-  <maximum>1.00000000</maximum>
-  <value>0.20833333</value>
-  <mode>lin</mode>
-  <mouseControl act="jump">continuous</mouseControl>
-  <resolution>-1.00000000</resolution>
-  <randomizable group="0">false</randomizable>
  </bsbObject>
  <bsbObject version="2" type="BSBController">
   <objectName>hor48</objectName>
@@ -327,7 +294,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.15500000</yValue>
+  <yValue>0.89000000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -395,7 +362,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.34500000</yValue>
+  <yValue>0.92500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -463,7 +430,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.65607313</yValue>
+  <yValue>0.67564779</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -531,7 +498,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.89500000</yValue>
+  <yValue>0.27000000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -599,7 +566,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.89500000</yValue>
+  <yValue>0.66000000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -667,7 +634,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.94000000</yValue>
+  <yValue>0.30500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -803,7 +770,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.74500000</yValue>
+  <yValue>0.07500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -871,7 +838,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.69000000</yValue>
+  <yValue>0.40500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -939,7 +906,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.47000000</yValue>
+  <yValue>0.87000000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -1007,7 +974,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.25000000</yValue>
+  <yValue>0.51000000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -1075,7 +1042,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.24000000</yValue>
+  <yValue>0.76500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -1143,7 +1110,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.23000000</yValue>
+  <yValue>0.72500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -1211,7 +1178,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.21500000</yValue>
+  <yValue>0.58500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -1279,7 +1246,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.47500000</yValue>
+  <yValue>0.41500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -1347,7 +1314,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.11500000</yValue>
+  <yValue>0.76500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -1415,7 +1382,7 @@ endin
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.08000000</yValue>
+  <yValue>0.42500000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -3746,7 +3713,7 @@ endin
   <midichan>0</midichan>
   <midicc>0</midicc>
   <description/>
-  <selected>false</selected>
+  <selected>true</selected>
   <label/>
   <pressedValue>1</pressedValue>
   <randomizable group="0">false</randomizable>
@@ -3784,8 +3751,8 @@ endin
  </bsbObject>
  <bsbObject version="2" type="BSBButton">
   <objectName>stop</objectName>
-  <x>121</x>
-  <y>67</y>
+  <x>113</x>
+  <y>4</y>
   <width>100</width>
   <height>30</height>
   <uuid>{f69d789c-f509-4738-a745-0042ff406bb8}</uuid>
@@ -3847,15 +3814,15 @@ endin
   <midichan>0</midichan>
   <midicc>0</midicc>
   <description/>
-  <selected>false</selected>
+  <selected>true</selected>
   <label/>
   <pressedValue>1</pressedValue>
   <randomizable group="0">false</randomizable>
  </bsbObject>
  <bsbObject version="2" type="BSBSpinBox">
   <objectName>a4</objectName>
-  <x>249</x>
-  <y>20</y>
+  <x>235</x>
+  <y>4</y>
   <width>80</width>
   <height>25</height>
   <uuid>{8e8e241f-3f6c-43a1-9d5a-427c0c7e33f0}</uuid>
@@ -3881,6 +3848,53 @@ endin
   <maximum>500</maximum>
   <randomizable group="0">false</randomizable>
   <value>442</value>
+ </bsbObject>
+ <bsbObject version="2" type="BSBCheckBox">
+  <objectName>move</objectName>
+  <x>119</x>
+  <y>58</y>
+  <width>20</width>
+  <height>20</height>
+  <uuid>{63a6c3cc-ef82-47b7-ae28-cb33a117ca37}</uuid>
+  <visible>true</visible>
+  <midichan>0</midichan>
+  <midicc>0</midicc>
+  <description/>
+  <selected>false</selected>
+  <label/>
+  <pressedValue>1</pressedValue>
+  <randomizable group="0">false</randomizable>
+ </bsbObject>
+ <bsbObject version="2" type="BSBLabel">
+  <objectName/>
+  <x>32</x>
+  <y>58</y>
+  <width>80</width>
+  <height>25</height>
+  <uuid>{da0d124e-ad85-4ef5-baed-60532998d68b}</uuid>
+  <visible>true</visible>
+  <midichan>0</midichan>
+  <midicc>-3</midicc>
+  <description/>
+  <label>Move</label>
+  <alignment>left</alignment>
+  <valignment>top</valignment>
+  <font>Liberation Sans</font>
+  <fontsize>10</fontsize>
+  <precision>3</precision>
+  <color>
+   <r>0</r>
+   <g>0</g>
+   <b>0</b>
+  </color>
+  <bgcolor mode="nobackground">
+   <r>255</r>
+   <g>255</g>
+   <b>255</b>
+  </bgcolor>
+  <bordermode>false</bordermode>
+  <borderradius>1</borderradius>
+  <borderwidth>0</borderwidth>
  </bsbObject>
 </bsbPanel>
 <bsbPresets>

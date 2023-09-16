@@ -22,7 +22,7 @@ Item {
 
         onTriggered: {
             const value = csound.getChannel(levelChannel) // does not work on Android...
-            console.log("getChannel in qml: ", value)
+            //console.log("getChannel in qml: ", value)
             meterItem.level = Math.min(value,1.0);
         }
     }
@@ -96,7 +96,7 @@ Item {
 
         Label {
             Layout.alignment: Qt.AlignHCenter
-            color: "yellow"
+            color: Material.secondaryTextColor //"yellow"
             text: harmonicNumber
         }
 
@@ -117,6 +117,7 @@ Item {
                     getChannelTimer.start()
                 } else {
                     getChannelTimer.stop()
+                    meterItem.level = 0
                 }
             }
         }
