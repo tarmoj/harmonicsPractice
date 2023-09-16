@@ -43,14 +43,38 @@ Window { // or maybe ApplicationWindow & header?
 
     }
 
-    ColumnLayout {
+    MessageDialog {
+        id: helpDialog
+        buttons: MessageDialog.Ok
+
+        text: qsTr(`HarmonicsPractice
+
+                   ... is ...
+
+                   Built using Csound sound engine and Qt framework<br>
+                   <br>
+                   (c) Tarmo Johannes
+                    `)
+
+        onButtonClicked: function (button, role) { // does not close on Android otherwise
+            switch (button) {
+            case MessageDialog.Ok:
+                helpDialog.close()
+            }
+        }
+    }
+
+    Item {
         id: mainColumn
         anchors.fill: parent
         anchors.margins: 5
 
+
         RowLayout {
             id:headerRow
             spacing: 5
+            height: helpButton.height + 10
+            width: parent.width
 
             Label {
                 text: root.title; font.bold: true; font.pointSize: 14
@@ -67,96 +91,99 @@ Window { // or maybe ApplicationWindow & header?
 
         }
 
-        MessageDialog {
-            id: helpDialog
-            buttons: MessageDialog.Ok
 
-            text: qsTr(`HarmonicsPractice
 
-                       ... is ...
+        Item {
+            id: controlsRow
+            anchors.top: headerRow.bottom
+            width: parent.width
+            height: onButton.implicitHeight // Or Flow immeditately?
 
-                       Built using Csound sound engine and Qt framework<br>
-                       <br>
-                       (c) Tarmo Johannes
-                        `)
+            Rectangle {anchors.fill: parent; color: "darkblue"}
 
-            onButtonClicked: function (button, role) { // does not close on Android otherwise
-                switch (button) {
-                case MessageDialog.Ok:
-                    helpDialog.close()
+
+//            Layout.fillWidth: true
+//            Layout.preferredHeight: onButton.implicitHeight
+//            Layout.fillHeight: true
+
+            Flow {
+                spacing: 10
+                anchors.fill: parent
+                //Layout.fillWidth: true
+                //Layout.preferredHeight: onButton.implicitHeight
+                //Layout.fillHeight: true
+                //scale: 0.8
+
+                Label {
+                    height: parent.height
+                    text:qsTr("All: ");
+                    verticalAlignment: Qt.AlignVCenter
                 }
+
+                Button {
+
+                    id: onButton
+                    text: qsTr("ON");
+
+                    onClicked:  {
+                        console.log("Count:", harmonicsRepeater.count );
+
+                        for (let i=0; i<harmonicsRepeater.count; i++ ) {
+                            harmonicsRepeater.itemAt(i).level = 0.6
+                        }
+                    }
+                }
+
+                Button {
+                    text: qsTr("OFF");
+
+                    onClicked:  {
+                        for (let i=0; i<harmonicsRepeater.count; i++ ) {
+                            harmonicsRepeater.itemAt(i).level = 0
+                        }
+                    }
+                }
+
+                Button {
+                    text: qsTr("Auto");
+                    checkable: true
+
+
+                    onCheckedChanged:  {
+
+                        for (let i=0; i<harmonicsRepeater.count; i++ ) {
+                            harmonicsRepeater.itemAt(i).autoLevel = checked
+                        }
+                    }
+                }
+
+                Button {
+                    text: qsTr("Bumps");
+                    checkable: true
+
+                    onCheckedChanged:  {
+                        console.log("Checked", checked)
+                        for (let i=0; i<harmonicsRepeater.count; i++ ) {
+                            harmonicsRepeater.itemAt(i).bumps = checked
+                        }
+                    }
+                }
+
             }
         }
 
-        Flow {
-            spacing: 10
-            Layout.fillWidth: true
-            Layout.preferredHeight: onButton.implicitHeight
-            scale: 0.8
-
-            Label {
-                height: parent.height
-                text:qsTr("All: ");
-                verticalAlignment: Qt.AlignVCenter
-            }
-
-            Button {
-
-                id: onButton
-                text: qsTr("ON");
-
-                onClicked:  {
-                    console.log("Count:", harmonicsRepeater.count );
-
-                    for (let i=0; i<harmonicsRepeater.count; i++ ) {
-                        harmonicsRepeater.itemAt(i).level = 0.6
-                    }
-                }
-            }
-
-            Button {
-                text: qsTr("OFF");
-
-                onClicked:  {
-                    for (let i=0; i<harmonicsRepeater.count; i++ ) {
-                        harmonicsRepeater.itemAt(i).level = 0
-                    }
-                }
-            }
-
-            Button {
-                text: qsTr("Auto");
-                checkable: true
-
-
-                onCheckedChanged:  {
-
-                    for (let i=0; i<harmonicsRepeater.count; i++ ) {
-                        harmonicsRepeater.itemAt(i).autoLevel = checked
-                    }
-                }
-            }
-
-            Button {
-                text: qsTr("Bumps");
-                checkable: true
-
-                onCheckedChanged:  {
-                    console.log("Checked", checked)
-                    for (let i=0; i<harmonicsRepeater.count; i++ ) {
-                        harmonicsRepeater.itemAt(i).bumps = checked
-                    }
-                }
-            }
-
-        }
 
         Item {
             id: harmonicsArea
 
-            Layout.fillHeight: true
-            Layout.preferredHeight: mainColumn.height*0.6
-            Layout.fillWidth: true
+            width: isLandscape ? parent.width - controlArea.width: parent.width // or maybe anchor changes in states.
+            anchors.top: controlsRow.bottom
+            anchors.bottom: isLandscape ? parent.bottom : controlArea.top
+//            Layout.fillHeight: true
+//            Layout.preferredHeight: mainColumn.height*0.6
+//            Layout.fillWidth: true
+
+
 
             Rectangle {
                 anchors.fill: parent
@@ -187,21 +214,70 @@ Window { // or maybe ApplicationWindow & header?
 
         Item {
             id: controlArea
-            Layout.fillWidth: true
-            Layout.preferredHeight: optionsFlow.height + 40
-            Layout.minimumHeight: volumeDial.height + volumeLabel.height
-            Layout.fillHeight: true
+
+            width: parent.width
+            anchors.bottom: parent.bottom
+            //anchors.top: isLandscape ? harmonicsArea.bottom :  harmonicsArea.bottom
+            height: Math.max(volumeColumn.height, optionsFlow.height)
+            //anchors.left: isLandscape ? harmonicsArea.right : parent.left
+//            Layout.fillWidth: true
+//            Layout.preferredHeight: optionsFlow.height + 40
+//            Layout.minimumHeight: volumeDial.height + volumeLabel.height
+//            Layout.fillHeight: true
+
+            Rectangle {anchors.fill: parent; color: "darkgreen"}
+
+
+            // TODO: move volume down and other controls above it. Start bottom up.
+            states: State {
+                        name: "landscape"; when: isLandscape
+
+                        PropertyChanges {
+                            target: controlArea
+                            width:  tuningRow.width + 6
+                        }
+
+                        AnchorChanges {
+                            target: controlArea
+                            anchors.right: parent.right
+                            anchors.top: harmonicsArea.top
+
+                        }
+
+                        PropertyChanges {
+                            target: volumeColumn
+                            //anchors.horizontalCenter: controlArea.horizontalCenter
+                            width: parent.width
+                        }
+
+
+                        PropertyChanges {
+                            target: optionsFlow
+                            anchors.left: controlArea.left
+                            anchors.top: volumeColumn.bottom
+                            anchors.topMargin: 20
+                        }
+
+                        PropertyChanges {
+                            target: harmonicsArea
+                            width: parent.width - controlArea.width
+                        }
+
+                    }
+
 
             ColumnLayout {
                 id: volumeColumn
 
-                //height: parent. height
+                anchors.topMargin: 5
+
 
                 Dial {
                     id: volumeDial
 
-                    //Layout.preferredWidth: 30
-                    //Layout.preferredHeight: 30
+//                    Layout.preferredHeight:  isLandscape ? noteComboBox.implicitHeight : implicitHeight
+//                    Layout.preferredWidth: Layout.preferredHeight
+                    Layout.alignment: Qt.AlignHCenter
 
                     from: 0.0
                     to: 1.0
@@ -212,13 +288,20 @@ Window { // or maybe ApplicationWindow & header?
                         //console.log("Volume: ", value)
                         csound.setChannel("volume", value)
                     }
+
+                    //Rectangle {anchors.fill: parent; color: "darkcyan"}
+
                 }
 
                 Label {
                     id: volumeLabel
-                    horizontalAlignment: Text.AlignTop
+                    horizontalAlignment: Text.AlignHCenter
+                    Layout.topMargin: 5
                     Layout.alignment: Qt.AlignHCenter
                     text: qsTr("Volume")
+
+                    //Rectangle {anchors.fill: parent; color: "darkmagenta"}
+
                 }
             }
 
@@ -228,6 +311,7 @@ Window { // or maybe ApplicationWindow & header?
                 spacing: 10
                 anchors.left: volumeColumn.right
                 anchors.right: parent.right
+                anchors.top: parent.top
                 anchors.leftMargin: 10
 
                 RowLayout {
@@ -274,6 +358,7 @@ Window { // or maybe ApplicationWindow & header?
 
                 RowLayout {
                     spacing: 5
+                    id: tuningRow
 
                     Label { text: qsTr("Tuning"); Layout.alignment: Qt.AlignVCenter}
 
