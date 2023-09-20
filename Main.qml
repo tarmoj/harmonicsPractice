@@ -49,11 +49,20 @@ Window { // or maybe ApplicationWindow & header?
 
         text: qsTr(`HarmonicsPractice
 
-                   ... is ...
+                   is an app for practicing harmonics on brass, wind or any other instruments.
 
-                   Built using Csound sound engine and Qt framework<br>
-                   <br>
-                   (c) Tarmo Johannes
+                   Or you can play whatever on top of the harmonics.
+
+                   Choose the base note and pull the sliders to set relative volume of the harmonics.
+
+                   A -  automatic fluctuation of the harmonics
+                   B -  "Bumps" - occasional attacks in  the sound
+
+                   Move - make the harmonics move between speakers
+
+                   Built using Csound sound engine and Qt framework
+
+                   (c) Tarmo Johannes trmjhnns@gmail.com
                     `)
 
         onButtonClicked: function (button, role) { // does not close on Android otherwise

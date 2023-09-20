@@ -122,13 +122,11 @@ instr PlayHarmonic
 	if (chnget:k("move")>0) then
 		kPhase oscili 1, iMoveFreq, -1, iPan 	
 		kPan = abs( (kPhase+1)/2 )
-	endif
-		
 	else
 		kPan = iPan
 	endif
 	
-	;kPan port kPan, 0.1, iPan
+	kPan port kPan, 0.1, iPan
 	
 	
 	
@@ -145,6 +143,8 @@ endin
 <CsScore>
 </CsScore>
 </CsoundSynthesizer>
+
+
 
 
 
