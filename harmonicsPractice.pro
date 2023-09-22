@@ -2,8 +2,8 @@ lessThan(QT_MAJOR_VERSION,6): error("Qt6 is required for this build.")
 
 #TODO
 
-#Landscape layout
-#Move
+#work with Flows - when window too small, creates problems (buttonFlow)
+#Landscape layout - maybe create a drawer for menu?
 
 QT += quick core
 
@@ -34,15 +34,16 @@ RESOURCES += resources.qrc
 
 # this is correct only for linux, later add a condition
 
-INCLUDEPATH += /home/tarmo/src/csound-6.12.2/include/ /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/
 
 
 android {
 
+  INCLUDEPATH += /home/tarmo/src/csound-6.12.2/include/ /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/
+
   HEADERS += /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/AndroidCsound.hpp
   LIBS +=  -L/home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/ -lcsoundandroid -lsndfile -lc++_shared #-loboe
 
-} else: win32|unix {
+} else: linux {
   INCLUDEPATH += /usr/local/include/csound/
 
   LIBS += -lcsound64 -lsndfile
