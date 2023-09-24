@@ -106,20 +106,18 @@ Window { // or maybe ApplicationWindow & header?
             id: buttonsRow
             anchors.top: headerRow.bottom
             width: parent.width
-            height: onButton.implicitHeight // Math.max(onButton.implicitHeight, buttonFlow.height)
-
-            //Rectangle {anchors.fill: parent; color: "darkblue"}
+            height: Math.max(onButton.implicitHeight, buttonFlow.height)
 
 
-            RowLayout {
+            Flow {
                 id: buttonFlow
                 spacing: 10
                 width: parent.width
 
-                // onHeightChanged: console.log("flow height: ", height) // siin on mingi jama, aga las olla
+
 
                 Label {
-                    height: parent.height
+                    height: onButton.height
                     text:qsTr("All: ");
                     verticalAlignment: Qt.AlignVCenter
                 }
@@ -128,9 +126,6 @@ Window { // or maybe ApplicationWindow & header?
 
                     id: onButton
                     text: qsTr("ON");
-
-//                    Layout.maximumWidth: implicitWidth
-//                    Layout.fillWidth: true
 
                     onClicked:  {
                         console.log("Count:", harmonicsRepeater.count );
@@ -143,8 +138,6 @@ Window { // or maybe ApplicationWindow & header?
 
                 Button {
                     text: qsTr("OFF");
-
-
 
                     onClicked:  {
                         for (let i=0; i<harmonicsRepeater.count; i++ ) {
@@ -238,8 +231,6 @@ Window { // or maybe ApplicationWindow & header?
                         AnchorChanges {
                             target: controlArea
                             anchors.right: parent.right
-                            anchors.top: harmonicsArea.top
-
                         }
 
                         PropertyChanges {
@@ -269,7 +260,7 @@ Window { // or maybe ApplicationWindow & header?
 
                 anchors.topMargin: 5
                 //anchors.top: parent.top
-                anchors.bottom: parent.bottom  // still gives "cannot anchor to null"
+                anchors.bottom: parent.bottom
 
 
 
@@ -309,6 +300,8 @@ Window { // or maybe ApplicationWindow & header?
                 anchors.right: parent.right
                 //anchors.top: parent.top
                 anchors.bottom: parent.bottom
+
+                anchors.bottomMargin: 5
 
 
                 anchors.leftMargin: 10
