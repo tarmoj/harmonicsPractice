@@ -111,7 +111,7 @@ Window { // or maybe ApplicationWindow & header?
             //Rectangle {anchors.fill: parent; color: "darkblue"}
 
 
-            Flow {
+            RowLayout {
                 id: buttonFlow
                 spacing: 10
                 width: parent.width
@@ -129,6 +129,9 @@ Window { // or maybe ApplicationWindow & header?
                     id: onButton
                     text: qsTr("ON");
 
+//                    Layout.maximumWidth: implicitWidth
+//                    Layout.fillWidth: true
+
                     onClicked:  {
                         console.log("Count:", harmonicsRepeater.count );
 
@@ -140,6 +143,8 @@ Window { // or maybe ApplicationWindow & header?
 
                 Button {
                     text: qsTr("OFF");
+
+
 
                     onClicked:  {
                         for (let i=0; i<harmonicsRepeater.count; i++ ) {
@@ -172,6 +177,8 @@ Window { // or maybe ApplicationWindow & header?
                         }
                     }
                 }
+
+                Item { Layout.fillWidth: true }
 
             }
         }
