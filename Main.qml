@@ -43,27 +43,23 @@ Window { // or maybe ApplicationWindow & header?
 
     }
 
-    MessageDialog {
+    MessageDialog { // maybe replace with normal Dialog later
         id: helpDialog
         buttons: MessageDialog.Ok
 
         text: qsTr(`HarmonicsPractice
 
-                   is an app for practicing harmonics on brass, wind or any other instruments.
+is an app for practicing harmonics on brass, wind or any other instruments.
+Or you can play whatever on top of the harmonics.
+Choose the base note and pull the sliders to set relative volume of the harmonics.
 
-                   Or you can play whatever on top of the harmonics.
+A -  automatic fluctuation of the harmonics
+B -  "Bumps" - occasional attacks in  the sound
+Move - make the harmonics move between speakers
 
-                   Choose the base note and pull the sliders to set relative volume of the harmonics.
+Built using Csound sound engine and Qt framework
 
-                   A -  automatic fluctuation of the harmonics
-                   B -  "Bumps" - occasional attacks in  the sound
-
-                   Move - make the harmonics move between speakers
-
-                   Built using Csound sound engine and Qt framework
-
-                   (c) Tarmo Johannes trmjhnns@gmail.com
-                    `)
+(c) Tarmo Johannes trmjhnns@gmail.com`)
 
         onButtonClicked: function (button, role) { // does not close on Android otherwise
             switch (button) {
@@ -72,6 +68,70 @@ Window { // or maybe ApplicationWindow & header?
             }
         }
     }
+
+    Drawer {
+           id: drawer
+           width: 0.66 * root.width
+           height: root.height
+
+           ColumnLayout {
+               anchors.fill: parent
+               spacing: 5
+
+               ComboBox {
+                   id: languageComboBox
+                   enabled: false
+
+                   model: ["EST", "EN"]
+
+                   onActivated: console.log("Laguage: ", currentText)
+
+               }
+
+               MenuItem {
+                   text: qsTr("Info")
+                   onTriggered: {
+                       drawer.close()
+                       helpDialog.open()
+                   }
+
+               }
+
+               RowLayout {
+                   spacing: 5
+                   id: tuningRow
+
+                   Label { text: qsTr("Tuning"); Layout.alignment: Qt.AlignVCenter}
+
+                   SpinBox {
+                       id: tuningSpinBox
+
+                       from: 400
+                       to: 500
+                       value: 442
+                       stepSize: 1
+                       editable: true
+
+                       onValueChanged:  {
+                           console.log("Tuning: ", value)
+                           csound.setChannel("a4", value)
+                       }
+                   }
+
+               }
+
+               MenuItem {
+                text: qsTr("Buy me a coffee")
+                onTriggered: Qt.openUrlExternally("https://tarmoj.github.io")
+               }
+
+               Item {Layout.fillHeight: true}
+
+
+           }
+
+
+       }
 
     Item {
         id: mainColumn
@@ -348,28 +408,7 @@ Window { // or maybe ApplicationWindow & header?
                     }
                 }
 
-                RowLayout {
-                    spacing: 5
-                    id: tuningRow
 
-                    Label { text: qsTr("Tuning"); Layout.alignment: Qt.AlignVCenter}
-
-                    SpinBox {
-                        id: tuningSpinBox
-
-                        from: 400
-                        to: 500
-                        value: 442
-                        stepSize: 1
-                        editable: true
-
-                        onValueChanged:  {
-                            console.log("Tuning: ", value)
-                            csound.setChannel("a4", value)
-                        }
-                    }
-
-                }
 
                 RowLayout {
                     spacing: 5

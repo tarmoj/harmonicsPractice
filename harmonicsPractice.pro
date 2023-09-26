@@ -2,8 +2,11 @@ lessThan(QT_MAJOR_VERSION,6): error("Qt6 is required for this build.")
 
 #TODO
 
-#work with Flows - when window too small, creates problems (buttonFlow)
-#Landscape layout - maybe create a drawer for menu?
+#Menu: Language | Info | Tuning | I like this app! - layout (left margin), size, landscape
+
+#Menu button (Hamburger)
+
+#Better help dialog window
 
 QT += quick core
 
