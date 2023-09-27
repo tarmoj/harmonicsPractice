@@ -6,7 +6,7 @@ import QtQuick.Controls.Material
 import QtQuick.Dialogs
 import QtCore
 
-Window { // or maybe ApplicationWindow & header?
+ApplicationWindow {
     id: root
     width: 480
     height: 640
@@ -43,6 +43,29 @@ Window { // or maybe ApplicationWindow & header?
 
     }
 
+    header: ToolBar {
+        id: headerRow
+
+        Material.background: "transparent"
+
+        Label {
+            id: titleLabel
+            text: root.title; font.bold: true; font.pointSize: 14
+            anchors.centerIn: parent
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        ToolButton {
+            id: menuButton
+            //height: titleLabel.height
+            anchors.left: parent.left
+            anchors.leftMargin: 5
+            anchors.verticalCenter: parent.verticalCenter
+            icon.source: "qrc:/images/more.png"
+            onClicked: drawer.opened ? drawer.close() : drawer.open()
+        }
+    }
+
     MessageDialog { // maybe replace with normal Dialog later
         id: helpDialog
         buttons: MessageDialog.Ok
@@ -69,12 +92,16 @@ Built using Csound sound engine and Qt framework
         }
     }
 
+
+
     Drawer {
            id: drawer
            width: 0.66 * root.width
            height: root.height - headerRow.height
            y: headerRow.height
            property int marginLeft: 20
+
+           background: Rectangle {anchors.fill:parent; color: Material.backgroundColor.lighter()}
 
 
            ColumnLayout {
@@ -149,30 +176,9 @@ Built using Csound sound engine and Qt framework
         anchors.fill: parent
         anchors.margins: 5
 
-
-        RowLayout {
-            id:headerRow
-            spacing: 5
-            height: menuButton.height + 10
-            width: parent.width
-
-
-
-            Label {
-                text: root.title; font.bold: true; font.pointSize: 14
-                Layout.alignment:  Qt.AlignHCenter;
-                horizontalAlignment: Text.AlignHCenter
-            }
-
-//            Item {Layout.fillWidth: true}    // spacer
-
-        }
-
-
-
         Item {
             id: buttonsRow
-            anchors.top: headerRow.bottom
+            //anchors.top: headerRow.bottom
             width: parent.width
             height: Math.max(onButton.implicitHeight, buttonFlow.height)
 
