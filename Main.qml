@@ -72,15 +72,22 @@ Built using Csound sound engine and Qt framework
     Drawer {
            id: drawer
            width: 0.66 * root.width
-           height: root.height
+           height: root.height - headerRow.height
+           y: headerRow.height
+           property int marginLeft: 20
+
 
            ColumnLayout {
                anchors.fill: parent
                spacing: 5
 
+
+
                ComboBox {
                    id: languageComboBox
                    enabled: false
+
+                   Layout.leftMargin: drawer.marginLeft
 
                    model: ["EST", "EN"]
 
@@ -88,18 +95,13 @@ Built using Csound sound engine and Qt framework
 
                }
 
-               MenuItem {
-                   text: qsTr("Info")
-                   onTriggered: {
-                       drawer.close()
-                       helpDialog.open()
-                   }
 
-               }
 
                RowLayout {
                    spacing: 5
                    id: tuningRow
+
+                   Layout.leftMargin: drawer.marginLeft
 
                    Label { text: qsTr("Tuning"); Layout.alignment: Qt.AlignVCenter}
 
@@ -116,6 +118,15 @@ Built using Csound sound engine and Qt framework
                            console.log("Tuning: ", value)
                            csound.setChannel("a4", value)
                        }
+                   }
+
+               }
+
+               MenuItem {
+                   text: qsTr("Info")
+                   onTriggered: {
+                       drawer.close()
+                       helpDialog.open()
                    }
 
                }
@@ -142,21 +153,18 @@ Built using Csound sound engine and Qt framework
         RowLayout {
             id:headerRow
             spacing: 5
-            height: helpButton.height + 10
+            height: menuButton.height + 10
             width: parent.width
+
+
 
             Label {
                 text: root.title; font.bold: true; font.pointSize: 14
+                Layout.alignment:  Qt.AlignHCenter;
+                horizontalAlignment: Text.AlignHCenter
             }
 
-            Item {Layout.fillWidth: true}    // spacer
-
-            ToolButton {
-                id: helpButton
-                Layout.alignment: Qt.AlignRight
-                text: "?"
-                onClicked: helpDialog.open()
-            }
+//            Item {Layout.fillWidth: true}    // spacer
 
         }
 
