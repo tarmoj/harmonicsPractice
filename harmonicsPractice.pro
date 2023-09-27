@@ -15,13 +15,13 @@ QT += quick core
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-VERSION = 0.1.0
+VERSION = 0.2.0
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 
 #!NB use cmake to build for android qt Qt6! (supports multi-abi)
 ANDROID_VERSION_NAME = $$VERSION
-ANDROID_VERSION_CODE = 1 # build number
+ANDROID_VERSION_CODE = 2 # build number
 #TARGET = "Harmonics\ Practice" # for %%INSERT_APP_NAME%% but that cannot include spaces.
 
 

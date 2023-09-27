@@ -96,7 +96,7 @@ Built using Csound sound engine and Qt framework
 
     Drawer {
            id: drawer
-           width: 0.66 * root.width
+           width: tuningRow.width + 40
            height: root.height - headerRow.height
            y: headerRow.height
            property int marginLeft: 20
@@ -160,7 +160,7 @@ Built using Csound sound engine and Qt framework
 
                MenuItem {
                 text: qsTr("Buy me a coffee")
-                onTriggered: Qt.openUrlExternally("https://tarmoj.github.io")
+                onTriggered: Qt.openUrlExternally("https://ko-fi.com/tarmojohannes")
                }
 
                Item {Layout.fillHeight: true}
