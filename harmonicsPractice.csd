@@ -90,7 +90,8 @@ instr PlayHarmonic
 	
 	if (chnget:k(SautoChannel)==1) then
 		; random amp
-		kLevel = 0.4+jspline(0.4,0.2,1)		
+                kLevel = k(0.4)+jspline:k(0.4,0.2,1)
+                ;printk2 kLevel
 		
 		kTrigger trigger kLevel, 0.5,2
 		if (kTrigger==1 && chnget:k(SbumpsChannel)==1) then
@@ -103,7 +104,8 @@ instr PlayHarmonic
 		kLevel = chnget:k(SlevelChannel)
 	endif
 	
-	kLevel port kLevel, 0.05
+        kLevel port kLevel, 0.05
+
 
 	
 	kTuning = chnget:k("a4")/A4
