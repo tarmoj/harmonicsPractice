@@ -31,6 +31,11 @@ public slots:
 
     Q_INVOKABLE double getChannel(const QString &channel);
 
+    void requestChannel(const QString &channel); // value will be returned via signal newChannelValue
+
+signals:
+    void newChannelValue(QString channel, double value);
+
 private:
     bool mStop;
 #ifdef Q_OS_ANDROID

@@ -88,6 +88,14 @@ void CsEngine::compileOrc(const QString &code)
     cs->CompileOrc(code.toLocal8Bit());
 }
 
+void CsEngine::requestChannel(const QString &channel)
+{
+    if (cs) {
+        emit newChannelValue(channel, getChannel(channel));
+    }
+
+}
+
 double CsEngine::getChannel(const QString &channel)
 {
     if (cs) {

@@ -16,6 +16,10 @@ ApplicationWindow {
 
     property bool isLandscape: root.width>root.height
 
+    signal setChannel(channel: string, value: double)
+    signal readScore(scoreLine: string)
+    signal requestChannel(channel: string)
+
 
     Connections {
             target: Application
@@ -24,6 +28,14 @@ ApplicationWindow {
                 csound.stop();
             }
         }
+
+//    Connections {
+//        target: csound
+
+//        function onNewChannelValue(channel, value) {
+//            console.log("level updated: ", channel, value)
+//        }
+//    }
 
     // see more on controlling Material: https://doc.qt.io/qt-6/qtquickcontrols-material.html#material-theme-attached-prop
 
