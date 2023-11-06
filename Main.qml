@@ -393,7 +393,7 @@ Built using Csound sound engine and Qt framework
                         Layout.preferredWidth: 80
                         currentIndex: 0
 
-                        model: ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "Bb", "B" ]
+                        model: ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B" ]
 
                         onCurrentValueChanged: {
                             console.log("Chose: ", currentText, currentIndex)

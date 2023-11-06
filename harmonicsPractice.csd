@@ -179,6 +179,10 @@ endin
 
 
 
+
+
+
+
 <bsbPanel>
  <label>Widgets</label>
  <objectName/>
@@ -193,7 +197,7 @@ endin
   <g>255</g>
   <b>255</b>
  </bgcolor>
- <bsbObject version="2" type="BSBScope">
+ <bsbObject type="BSBScope" version="2">
   <objectName/>
   <x>5</x>
   <y>341</y>
@@ -213,7 +217,7 @@ endin
   <mode>0.00000000</mode>
   <triggermode>NoTrigger</triggermode>
  </bsbObject>
- <bsbObject version="2" type="BSBButton">
+ <bsbObject type="BSBButton" version="2">
   <objectName>button85</objectName>
   <x>6</x>
   <y>4</y>
@@ -235,7 +239,7 @@ endin
   <latched>false</latched>
   <fontsize>10</fontsize>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor48</objectName>
   <x>5</x>
   <y>125</y>
@@ -272,7 +276,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>5</x>
   <y>105</y>
@@ -303,7 +307,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor50</objectName>
   <x>26</x>
   <y>125</y>
@@ -340,7 +344,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>26</x>
   <y>105</y>
@@ -371,7 +375,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor52</objectName>
   <x>47</x>
   <y>125</y>
@@ -408,7 +412,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>47</x>
   <y>105</y>
@@ -439,7 +443,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor54</objectName>
   <x>68</x>
   <y>125</y>
@@ -476,7 +480,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>68</x>
   <y>105</y>
@@ -507,7 +511,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor56</objectName>
   <x>89</x>
   <y>125</y>
@@ -544,7 +548,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>89</x>
   <y>105</y>
@@ -575,7 +579,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor58</objectName>
   <x>110</x>
   <y>125</y>
@@ -612,7 +616,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>110</x>
   <y>105</y>
@@ -643,7 +647,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor60</objectName>
   <x>131</x>
   <y>125</y>
@@ -680,7 +684,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>131</x>
   <y>105</y>
@@ -711,7 +715,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor62</objectName>
   <x>152</x>
   <y>125</y>
@@ -748,7 +752,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>152</x>
   <y>105</y>
@@ -779,7 +783,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor64</objectName>
   <x>173</x>
   <y>125</y>
@@ -816,7 +820,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>173</x>
   <y>105</y>
@@ -847,7 +851,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor66</objectName>
   <x>194</x>
   <y>125</y>
@@ -884,7 +888,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>194</x>
   <y>105</y>
@@ -915,7 +919,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor68</objectName>
   <x>215</x>
   <y>125</y>
@@ -952,7 +956,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>215</x>
   <y>105</y>
@@ -983,7 +987,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor70</objectName>
   <x>236</x>
   <y>125</y>
@@ -1020,7 +1024,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>236</x>
   <y>105</y>
@@ -1051,7 +1055,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor72</objectName>
   <x>257</x>
   <y>125</y>
@@ -1088,7 +1092,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>257</x>
   <y>105</y>
@@ -1119,7 +1123,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor74</objectName>
   <x>278</x>
   <y>125</y>
@@ -1156,7 +1160,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>278</x>
   <y>105</y>
@@ -1187,7 +1191,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor76</objectName>
   <x>299</x>
   <y>125</y>
@@ -1224,7 +1228,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>299</x>
   <y>105</y>
@@ -1255,7 +1259,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor78</objectName>
   <x>320</x>
   <y>125</y>
@@ -1292,7 +1296,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>320</x>
   <y>105</y>
@@ -1323,7 +1327,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor80</objectName>
   <x>341</x>
   <y>125</y>
@@ -1360,7 +1364,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>341</x>
   <y>105</y>
@@ -1391,7 +1395,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor82</objectName>
   <x>362</x>
   <y>125</y>
@@ -1428,7 +1432,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>362</x>
   <y>105</y>
@@ -1459,7 +1463,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor84</objectName>
   <x>383</x>
   <y>125</y>
@@ -1496,7 +1500,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>383</x>
   <y>105</y>
@@ -1527,7 +1531,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor86</objectName>
   <x>404</x>
   <y>125</y>
@@ -1564,7 +1568,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>404</x>
   <y>105</y>
@@ -1595,7 +1599,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor88</objectName>
   <x>425</x>
   <y>125</y>
@@ -1632,7 +1636,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>425</x>
   <y>105</y>
@@ -1663,7 +1667,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor90</objectName>
   <x>446</x>
   <y>125</y>
@@ -1700,7 +1704,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>446</x>
   <y>105</y>
@@ -1731,7 +1735,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor92</objectName>
   <x>467</x>
   <y>125</y>
@@ -1768,7 +1772,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>467</x>
   <y>105</y>
@@ -1799,7 +1803,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor94</objectName>
   <x>488</x>
   <y>125</y>
@@ -1836,7 +1840,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>488</x>
   <y>105</y>
@@ -1867,7 +1871,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor96</objectName>
   <x>509</x>
   <y>125</y>
@@ -1904,7 +1908,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>509</x>
   <y>105</y>
@@ -1935,7 +1939,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor98</objectName>
   <x>530</x>
   <y>125</y>
@@ -1972,7 +1976,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>530</x>
   <y>105</y>
@@ -2003,7 +2007,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor100</objectName>
   <x>551</x>
   <y>125</y>
@@ -2040,7 +2044,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>551</x>
   <y>105</y>
@@ -2071,7 +2075,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor102</objectName>
   <x>572</x>
   <y>125</y>
@@ -2108,7 +2112,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>572</x>
   <y>105</y>
@@ -2139,7 +2143,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor104</objectName>
   <x>593</x>
   <y>125</y>
@@ -2176,7 +2180,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>593</x>
   <y>105</y>
@@ -2207,7 +2211,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor106</objectName>
   <x>614</x>
   <y>125</y>
@@ -2244,7 +2248,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>614</x>
   <y>105</y>
@@ -2275,7 +2279,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor108</objectName>
   <x>635</x>
   <y>125</y>
@@ -2312,7 +2316,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>635</x>
   <y>105</y>
@@ -2343,7 +2347,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor110</objectName>
   <x>656</x>
   <y>125</y>
@@ -2380,7 +2384,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>656</x>
   <y>105</y>
@@ -2411,7 +2415,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor112</objectName>
   <x>677</x>
   <y>125</y>
@@ -2448,7 +2452,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>677</x>
   <y>105</y>
@@ -2479,7 +2483,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor114</objectName>
   <x>698</x>
   <y>125</y>
@@ -2516,7 +2520,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>698</x>
   <y>105</y>
@@ -2547,7 +2551,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor116</objectName>
   <x>719</x>
   <y>125</y>
@@ -2584,7 +2588,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>719</x>
   <y>105</y>
@@ -2615,7 +2619,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor118</objectName>
   <x>740</x>
   <y>125</y>
@@ -2652,7 +2656,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>740</x>
   <y>105</y>
@@ -2683,7 +2687,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor120</objectName>
   <x>761</x>
   <y>125</y>
@@ -2720,7 +2724,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>761</x>
   <y>105</y>
@@ -2751,7 +2755,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor122</objectName>
   <x>782</x>
   <y>125</y>
@@ -2788,7 +2792,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>782</x>
   <y>105</y>
@@ -2819,7 +2823,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor124</objectName>
   <x>803</x>
   <y>125</y>
@@ -2856,7 +2860,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>803</x>
   <y>105</y>
@@ -2887,7 +2891,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor126</objectName>
   <x>824</x>
   <y>125</y>
@@ -2924,7 +2928,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>824</x>
   <y>105</y>
@@ -2955,7 +2959,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor128</objectName>
   <x>845</x>
   <y>125</y>
@@ -2992,7 +2996,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>845</x>
   <y>105</y>
@@ -3023,7 +3027,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor130</objectName>
   <x>866</x>
   <y>125</y>
@@ -3060,7 +3064,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>866</x>
   <y>105</y>
@@ -3091,7 +3095,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor132</objectName>
   <x>887</x>
   <y>125</y>
@@ -3128,7 +3132,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>887</x>
   <y>105</y>
@@ -3159,7 +3163,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor134</objectName>
   <x>908</x>
   <y>125</y>
@@ -3196,7 +3200,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>908</x>
   <y>105</y>
@@ -3227,7 +3231,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor136</objectName>
   <x>929</x>
   <y>125</y>
@@ -3264,7 +3268,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>929</x>
   <y>105</y>
@@ -3295,7 +3299,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor138</objectName>
   <x>950</x>
   <y>125</y>
@@ -3332,7 +3336,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>950</x>
   <y>105</y>
@@ -3363,7 +3367,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor140</objectName>
   <x>971</x>
   <y>125</y>
@@ -3400,7 +3404,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>971</x>
   <y>105</y>
@@ -3431,7 +3435,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor142</objectName>
   <x>992</x>
   <y>125</y>
@@ -3468,7 +3472,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>992</x>
   <y>105</y>
@@ -3499,7 +3503,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor144</objectName>
   <x>1013</x>
   <y>125</y>
@@ -3536,7 +3540,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>1013</x>
   <y>105</y>
@@ -3567,7 +3571,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor146</objectName>
   <x>1034</x>
   <y>125</y>
@@ -3604,7 +3608,7 @@ endin
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>1034</x>
   <y>105</y>
@@ -3635,7 +3639,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBKnob">
+ <bsbObject type="BSBKnob" version="2">
   <objectName>volume</objectName>
   <x>429</x>
   <y>12</y>
@@ -3665,7 +3669,7 @@ endin
   <flatstyle>true</flatstyle>
   <integerMode>false</integerMode>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>431</x>
   <y>72</y>
@@ -3696,7 +3700,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>321</x>
   <y>69</y>
@@ -3728,7 +3732,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBCheckBox">
+ <bsbObject type="BSBCheckBox" version="2">
   <objectName>bumps4</objectName>
   <x>380</x>
   <y>69</y>
@@ -3744,7 +3748,7 @@ endin
   <pressedValue>1</pressedValue>
   <randomizable group="0">false</randomizable>
  </bsbObject>
- <bsbObject version="2" type="BSBDisplay">
+ <bsbObject type="BSBDisplay" version="2">
   <objectName>time</objectName>
   <x>380</x>
   <y>341</y>
@@ -3775,7 +3779,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>1</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBButton">
+ <bsbObject type="BSBButton" version="2">
   <objectName>stop</objectName>
   <x>113</x>
   <y>4</y>
@@ -3797,7 +3801,7 @@ endin
   <latched>false</latched>
   <fontsize>10</fontsize>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>322</x>
   <y>34</y>
@@ -3829,7 +3833,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBCheckBox">
+ <bsbObject type="BSBCheckBox" version="2">
   <objectName>auto4</objectName>
   <x>381</x>
   <y>34</y>
@@ -3845,7 +3849,7 @@ endin
   <pressedValue>1</pressedValue>
   <randomizable group="0">false</randomizable>
  </bsbObject>
- <bsbObject version="2" type="BSBSpinBox">
+ <bsbObject type="BSBSpinBox" version="2">
   <objectName>a4</objectName>
   <x>235</x>
   <y>4</y>
@@ -3875,7 +3879,7 @@ endin
   <randomizable group="0">false</randomizable>
   <value>442</value>
  </bsbObject>
- <bsbObject version="2" type="BSBCheckBox">
+ <bsbObject type="BSBCheckBox" version="2">
   <objectName>move</objectName>
   <x>119</x>
   <y>58</y>
@@ -3891,7 +3895,7 @@ endin
   <pressedValue>1</pressedValue>
   <randomizable group="0">false</randomizable>
  </bsbObject>
- <bsbObject version="2" type="BSBLabel">
+ <bsbObject type="BSBLabel" version="2">
   <objectName/>
   <x>32</x>
   <y>58</y>
@@ -3922,7 +3926,7 @@ endin
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject version="2" type="BSBController">
+ <bsbObject type="BSBController" version="2">
   <objectName>hor113</objectName>
   <x>551</x>
   <y>12</y>
