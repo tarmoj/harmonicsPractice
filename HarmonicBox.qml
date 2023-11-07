@@ -21,15 +21,16 @@ Item {
         repeat:true
 
         onTriggered: {
-            const value = csound.getChannel(levelChannel) // does not work on Android...
+            requestChannel(levelChannel)
+            //const value = csound.getChannel(levelChannel) // does not work on Android...
             //console.log("getChannel in qml: ", value)
-            meterItem.level = Math.min(value,1.0);
+            //meterItem.level = Math.min(value,1.0);
         }
     }
 
     onLevelChanged: {
         if (!autoLevel) {
-            csound.setChannel(levelChannel, level)
+            setChannel(levelChannel, level)
         }
     }
 
@@ -111,7 +112,7 @@ Item {
                 if (!checked && bumpsButton.checked) { // bumps out when auto is out
                     bumpsButton.checked = false
                 }
-                csound.setChannel("auto"+harmonicNumber, checked ? 1 : 0)
+                setChannel("auto"+harmonicNumber, checked ? 1 : 0)
 
                 if (checked) {
                     getChannelTimer.start()
@@ -132,7 +133,7 @@ Item {
             text: "B"
 
             onCheckedChanged: {
-                csound.setChannel("bumps"+harmonicNumber, checked ? 1 : 0)
+                setChannel("bumps"+harmonicNumber, checked ? 1 : 0)
             }
 
         }

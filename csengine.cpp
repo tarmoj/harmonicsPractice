@@ -4,7 +4,7 @@
 #include <QCoreApplication>
 //#include <QDateTime>
 
-// NB! use DEFINES += USE_DOUBLE
+// NB! use DEFINES += USE_DOUBLE -  no, With Csound 6.18 not needed and with Csound 6.12 must be float for Android...
 
 
 CsEngine::CsEngine(QObject *parent) : QObject(parent)

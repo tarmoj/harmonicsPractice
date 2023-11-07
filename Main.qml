@@ -18,24 +18,30 @@ ApplicationWindow {
 
     signal setChannel(channel: string, value: double)
     signal readScore(scoreLine: string)
+    signal compileOrc(code: string)
     signal requestChannel(channel: string)
+    signal newChannelValue(channel: string, value: double)
+
+    onNewChannelValue: {
+        if (channel[0]==="h") {
+            const channelNumber = parseInt(channel.slice(1));
+            if (channelNumber>=1 && channelNumber<=16) {
+                harmonicsRepeater.itemAt(channelNumber-1).level = value;
+            }
+
+
+        }
+
+    }
 
 
     Connections {
             target: Application
             function onAboutToQuit() {
                 console.log("Bye!")
-                csound.stop();
+                csound.stop(); // this must probably stay straight call not via signal-slot
             }
         }
-
-//    Connections {
-//        target: csound
-
-//        function onNewChannelValue(channel, value) {
-//            console.log("level updated: ", channel, value)
-//        }
-//    }
 
     // see more on controlling Material: https://doc.qt.io/qt-6/qtquickcontrols-material.html#material-theme-attached-prop
 
@@ -43,7 +49,7 @@ ApplicationWindow {
     function setBaseNote() {
         const pitch = ( parseInt(octaveComboBox.currentText)+4 + noteComboBox.currentIndex/100).toFixed(2)
         console.log("New pitch: ", pitch);
-        csound.compileOrc(`gkBaseFreq init cpspch(${pitch})`);
+         compileOrc(`gkBaseFreq init cpspch(${pitch})`);
     }
 
     Settings {
@@ -155,7 +161,7 @@ Built using Csound sound engine and Qt framework
 
                        onValueChanged:  {
                            console.log("Tuning: ", value)
-                           csound.setChannel("a4", value)
+                            setChannel("a4", value)
                        }
                    }
 
@@ -362,7 +368,7 @@ Built using Csound sound engine and Qt framework
 
                     onValueChanged: {
                         //console.log("Volume: ", value)
-                        csound.setChannel("volume", value)
+                         setChannel("volume", value)
                     }
 
                     //Rectangle {anchors.fill: parent; color: "darkcyan"}
@@ -445,7 +451,7 @@ Built using Csound sound engine and Qt framework
                         id: moveCheckBox
 
                         onCheckedChanged: {
-                            csound.setChannel("move", checked ? 1 : 0);
+                             setChannel("move", checked ? 1 : 0);
                         }
                     }
 
