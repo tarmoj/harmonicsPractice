@@ -26,7 +26,7 @@ ApplicationWindow {
         if (channel[0]==="h") {
             const channelNumber = parseInt(channel.slice(1));
             if (channelNumber>=1 && channelNumber<=16) {
-                harmonicsRepeater.itemAt(channelNumber-1).level = value;
+                harmonicsRepeater.itemAt(channelNumber-1).level = Math.min(value,1.0);
             }
 
 
@@ -231,6 +231,7 @@ Built using Csound sound engine and Qt framework
                 Button {
                     text: qsTr("OFF");
 
+                    //TODO: switch out also  all AUTO
                     onClicked:  {
                         for (let i=0; i<harmonicsRepeater.count; i++ ) {
                             harmonicsRepeater.itemAt(i).level = 0
