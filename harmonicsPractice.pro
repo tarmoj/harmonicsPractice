@@ -60,6 +60,86 @@ android {
   LIBS += -lcsound64 -lsndfile
 }
 
+ios {
+
+
+    csdfiles.files = harmonicsPractice.csd
+    QMAKE_BUNDLE_DATA += csdfiles
+
+    QMAKE_INFO_PLIST = $$PWD/ios/Info.plist
+
+    QMAKE_ASSET_CATALOGS += $$PWD/ios/Assets.xcassets
+    QMAKE_ASSET_CATALOGS_APP_ICON = AppIcon
+
+    QMAKE_IOS_LAUNCH_SCREEN = $$PWD/ios/LaunchScreen.storyboard
+
+
+
+
+
+
+    SOURCES += \
+        csoundproxy.mm \
+        csound-iOS/classes/CsoundObj.m \
+        ios-screen.mm \
+
+
+    HEADERS += \
+        csound-iOS/classes/CsoundObj.h \
+        csoundproxy.h \
+        ios-screen.h \
+
+
+    SOURCES -= csengine.cpp
+    HEADERS -= csengine.h
+
+    HEADERS += \
+        csound-iOS/classes/bindings/motion/CsoundAccelerometerBinding.h \
+        csound-iOS/classes/bindings/motion/CsoundAttitudeBinding.h \
+        csound-iOS/classes/bindings/motion/CsoundGyroscopeBinding.h \
+        csound-iOS/classes/bindings/motion/CsoundMotion.h \
+        csound-iOS/classes/bindings/ui/CsoundButtonBinding.h \
+        csound-iOS/classes/bindings/ui/CsoundLabelBinding.h \
+        csound-iOS/classes/bindings/ui/CsoundMomentaryButtonBinding.h \
+        csound-iOS/classes/bindings/ui/CsoundSliderBinding.h \
+        csound-iOS/classes/bindings/ui/CsoundSwitchBinding.h \
+        csound-iOS/classes/bindings/ui/CsoundUI.h \
+        csound-iOS/classes/midi/CsoundMIDI.h \
+        csound-iOS/classes/midi/MidiWidgetWrapper.h \
+        csound-iOS/classes/midi/MidiWidgetsManager.h \
+        csound-iOS/classes/midi/SliderMidiWidgetWrapper.h
+
+    SOURCES += \
+        csound-iOS/classes/bindings/motion/CsoundAccelerometerBinding.m \
+        csound-iOS/classes/bindings/motion/CsoundAttitudeBinding.m \
+        csound-iOS/classes/bindings/motion/CsoundGyroscopeBinding.m \
+        csound-iOS/classes/bindings/motion/CsoundMotion.m \
+        csound-iOS/classes/bindings/ui/CsoundButtonBinding.m \
+        csound-iOS/classes/bindings/ui/CsoundLabelBinding.m \
+        csound-iOS/classes/bindings/ui/CsoundMomentaryButtonBinding.m \
+        csound-iOS/classes/bindings/ui/CsoundSliderBinding.m \
+        csound-iOS/classes/bindings/ui/CsoundSwitchBinding.m \
+        csound-iOS/classes/bindings/ui/CsoundUI.m \
+        csound-iOS/classes/midi/CsoundMIDI.m \
+        csound-iOS/classes/midi/MidiWidgetsManager.m \
+        csound-iOS/classes/midi/SliderMidiWidgetWrapper.m
+
+
+    INCLUDEPATH += $$PWD/csound-iOS/headers
+    INCLUDEPATH += $$PWD/csound-iOS/classes
+    INCLUDEPATH += $$PWD/csound-iOS/classes/midi
+    LIBS += $$PWD/csound-iOS/libs/libcsound.a
+    LIBS += $$PWD/csound-iOS/libs/libsndfile.a
+    LIBS += -framework Accelerate
+    LIBS += -framework AVFAudio
+    LIBS += -framework CoreMidi
+    LIBS += -framework CoreMotion
+    LIBS += -framework UIKit
+    LIBS += -framework MediaPlayer
+
+
+}
+
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =

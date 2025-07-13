@@ -1,72 +1,70 @@
 #include "csengine.h"
+#include <QCoreApplication>
 #include <QDebug>
 #include <QTemporaryFile>
-#include <QCoreApplication>
 //#include <QDateTime>
 
 // NB! use DEFINES += USE_DOUBLE -  no, With Csound 6.18 not needed and with Csound 6.12 must be float for Android...
 
-
-CsEngine::CsEngine(QObject *parent) : QObject(parent)
+CsEngine::CsEngine(QObject *parent)
+    : QObject(parent)
 {
-
     // should be probably in main.cpp
     //csoundInitialize(CSOUNDINIT_NO_ATEXIT | CSOUNDINIT_NO_SIGNAL_HANDLER); // not sure if necessary, but Steven Yi claims, it should be there
 
 #ifdef Q_OS_ANDROID
-	cs = new AndroidCsound();
-	cs->setOpenSlCallbacks(); // for android audio to work
+    cs = new AndroidCsound();
+    cs->setOpenSlCallbacks(); // for android audio to work
 
-# else
-	cs = new Csound();
+#else
+    cs = new Csound();
 #endif
-    mStop=false;
-	cs->SetOption("-odac");
-	cs->SetOption("-d");
+    mStop = false;
+    cs->SetOption("-odac");
+    cs->SetOption("-d");
 }
 
 CsEngine::~CsEngine()
 {
-	stop(); // this is mess
+    stop(); // this is mess
 }
 
-void CsEngine::play() {
-
+void CsEngine::play()
+{
     if (!open(":/harmonicsPractice.csd")) {
-		cs->Start();
+        cs->Start();
         //cs->Perform();
-		while(cs->PerformKsmps()==0 && mStop==false ) {
-            QCoreApplication::processEvents(); // probably bad solution but works. Not exactyl necessary, but makes csound/app more responsive
+        while (cs->PerformKsmps() == 0 && mStop == false) {
+            QCoreApplication::
+                processEvents(); // probably bad solution but works. Not exactyl necessary, but makes csound/app more responsive
         }
 
         cs->Stop();
         delete cs;
 
-		qDebug()<<"END PERFORMANCE";
-		mStop=false; // luba uuesti käivitamine
-	}
+        qDebug() << "END PERFORMANCE";
+        mStop = false; // luba uuesti käivitamine
+    }
 }
 
 int CsEngine::open(QString csd)
 {
-
     QTemporaryFile *tempFile = QTemporaryFile::createNativeFile(csd); //TODO: checi if not 0
 
     //qDebug()<<tempFile->fileName() <<  tempFile->readAll();
 
-	if (!cs->Compile( tempFile->fileName().toLocal8Bit().data()) ){
+    if (!cs->Compile(tempFile->fileName().toLocal8Bit().data())) {
         return 0;
     } else {
-        qDebug()<<"Could not open csound file: "<<csd;
+        qDebug() << "Could not open csound file: " << csd;
         return -1;
     }
 }
 
 void CsEngine::stop()
 {
-	mStop = true;
+    mStop = true;
 }
-
 
 void CsEngine::setChannel(const QString &channel, double value)
 {
@@ -77,9 +75,9 @@ void CsEngine::setChannel(const QString &channel, double value)
 void CsEngine::readScore(const QString &scoreLine)
 {
     // test time:
-//    int time =  QDateTime::currentMSecsSinceEpoch()%1000000;
+    //    int time =  QDateTime::currentMSecsSinceEpoch()%1000000;
 
-    qDebug()<<"csEvent" << scoreLine ; // << time;
+    qDebug() << "csEvent" << scoreLine; // << time;
     cs->ReadScore(scoreLine.toLocal8Bit());
 }
 
@@ -93,7 +91,6 @@ void CsEngine::requestChannel(const QString &channel)
     if (cs) {
         emit newChannelValue(channel, getChannel(channel));
     }
-
 }
 
 double CsEngine::getChannel(const QString &channel)
@@ -102,7 +99,7 @@ double CsEngine::getChannel(const QString &channel)
         int error;
         MYFLT value = cs->GetChannel(channel.toLocal8Bit(), &error);
         //qDebug() << "Channel: " << channel << "Error code: " << error << "Value: "  << value; // 0 is OK
-        if ( !error ) {
+        if (!error) {
             return value;
         } else {
             return 0;
@@ -110,5 +107,4 @@ double CsEngine::getChannel(const QString &channel)
     } else {
         return 0;
     }
-
 }
