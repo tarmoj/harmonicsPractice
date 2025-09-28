@@ -1,17 +1,18 @@
 # Harmonics Practice
 
-Harmonics Practice helps brass players and other wind instrumentalists develop control, intonation, and awareness of the harmonic series.
+Harmonics Practice is an app for practicing harmonics on brass, wind or any other instruments.
+It helps to develop control, intonation, and awareness of the harmonic series.
 
-It plays a fundametal tone and harmonics which relative volume you can adjust. Play against the drone note and check your tuning so that you are in perfect match with the harmonics. For best result use speakers or headphones.
+Or you can play whatever on top of the harmonics.
 
-With the built-in sound engine, you can:
-- select the relative strength of each harmonic of the reference tone
-- make harmonics' volume undulate automatically and move in panning (left to right)
-- add small 'bumps' to give rhythmic diversity for the reference drone
-- select reference note, its octave and tuning
+Choose the base note and pull the sliders to set relative volume of the harmonics.
 
-Ideal for developing perfect intonation in chords.
+A -  automatic fluctuation of the harmonics<br>
+B -  "Bumps" - occasional attacks in  the sound<br>
+Move - make the harmonics move between speakers
 
 Designed for students, teachers, and professionals who want a focused way to practicing your tone and intonation.
 
-Contact: Tarmo Johannes trmjhnns@gmail.com 
+Built using Csound sound engine and Qt framework
+
+(c) Tarmo Johannes trmjhnns@gmail.com
