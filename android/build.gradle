@@ -5,7 +5,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.1'
+        classpath 'com.android.tools.build:gradle:8.1.1'
     }
 }
 
@@ -21,6 +21,10 @@ dependencies {
 }
 
 android {
+
+    // add namespace
+    namespace "org.tarmoj.harmonics"
+    
     /*******************************************************
      * The following variables:
      * - androidBuildToolsVersion,
@@ -33,6 +37,7 @@ android {
      * updated by QtCreator and androiddeployqt tools.
      * Changing them manually might break the compilation!
      *******************************************************/
+     
 
     compileSdkVersion androidCompileSdkVersion
     buildToolsVersion androidBuildToolsVersion
@@ -73,9 +78,10 @@ android {
     }
 
     defaultConfig {
+        applicationId "org.tarmoj.harmonics"
         resConfig "en"
         minSdkVersion qtMinSdkVersion
-        targetSdkVersion qtTargetSdkVersion
+        targetSdkVersion 35
         ndk.abiFilters = qtTargetAbiList.split(",")
     }
 }
