@@ -10,6 +10,13 @@
 #include "csengine.h"
 #endif
 
+#ifdef Q_OS_ANDROID
+#include <QJniEnvironment>
+#include <QtCore/private/qandroidextras_p.h>
+
+#endif
+
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -17,6 +24,36 @@ int main(int argc, char *argv[])
     app.setOrganizationName("Tarmo Johannes Events and Software");
     app.setOrganizationDomain("harmonics.tarmmoj.org");
     app.setApplicationName("Harmonics Practice");
+
+#ifdef Q_OS_ANDROID
+
+    //keep screen on:
+    QJniObject activity
+        = QNativeInterface::QAndroidApplication::context(); //  QtAndroid::androidActivity();
+    if (activity.isValid()) {
+        QJniObject window = activity.callObjectMethod("getWindow", "()Landroid/view/Window;");
+
+        if (window.isValid()) {
+            const int FLAG_KEEP_SCREEN_ON = 128;
+            window.callMethod<void>("addFlags", "(I)V", FLAG_KEEP_SCREEN_ON);
+
+            // set titlebar color here...
+            window.callMethod<void>("addFlags", "(I)V", 0x80000000);
+            window.callMethod<void>("clearFlags", "(I)V", 0x04000000);
+            window.callMethod<void>(
+                "setStatusBarColor",
+                "(I)V",
+                0x1c1b1f); // hardcoded color for now. later try to get via QML engine Material.background
+            QJniObject decorView = window.callObjectMethod("getDecorView", "()Landroid/view/View;");
+            decorView.callMethod<void>("setSystemUiVisibility", "(I)V", 0x00002000);
+        }
+        QJniEnvironment env;
+        if (env->ExceptionCheck()) {
+            env->ExceptionClear();
+        } //Clear any possible pending exceptions.
+    }
+#endif
+
 
 #ifdef Q_OS_IOS
     IosScreen screen;
