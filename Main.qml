@@ -131,6 +131,7 @@ Built using Csound sound engine and Qt framework
                ComboBox {
                    id: languageComboBox
                    enabled: false
+                   visible: false
 
                    Layout.leftMargin: drawer.marginLeft
 
@@ -178,6 +179,7 @@ Built using Csound sound engine and Qt framework
 
                MenuItem {
                 text: qsTr("Buy me a coffee")
+                visible: Qt.platform.os !== "ios"
                 onTriggered: Qt.openUrlExternally("https://ko-fi.com/tarmojohannes")
                }
 

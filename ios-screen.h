@@ -5,7 +5,7 @@
 class IosScreen
 {
 public:
-   void setTimerDisabled();
+    void setTimerDisabled();
 };
 
 #endif // IOSSCREEN_H
