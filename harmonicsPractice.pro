@@ -15,13 +15,13 @@ QT += quick core
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-VERSION = 0.2.1
+VERSION = 0.2.2
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 
 #!NB use cmake to build for android qt Qt6! (supports multi-abi)
 ANDROID_VERSION_NAME = $$VERSION
-ANDROID_VERSION_CODE = 3 # build number
+ANDROID_VERSION_CODE = 5 # build number
 #TARGET = "Harmonics\ Practice" # for %%INSERT_APP_NAME%% but that cannot include spaces.
 
 
@@ -154,3 +154,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 message(Includepath: $$INCLUDEPATH Libs: $$LIBS)
+
+contains(ANDROID_TARGET_ARCH,arm64-v8a) {
+    ANDROID_EXTRA_LIBS = \
+        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libsndfile.so \
+        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/arm64-v8a/libcsoundandroid.so
+}

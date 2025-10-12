@@ -3,4 +3,4 @@
 CMakeLists.txt.user*
 icon material/*
 build/*
-"for play store/*"
+for_google_play/*

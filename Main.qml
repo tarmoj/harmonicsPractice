@@ -22,6 +22,7 @@ ApplicationWindow {
     signal requestChannel(channel: string)
     signal newChannelValue(channel: string, value: double)
 
+
     onNewChannelValue: {
         if (channel[0]==="h") {
             const channelNumber = parseInt(channel.slice(1));
@@ -61,8 +62,10 @@ ApplicationWindow {
 
     }
 
+
     header: ToolBar {
         id: headerRow
+        anchors.topMargin: SafeArea.margins.top
 
         Material.background: "transparent"
 
@@ -111,12 +114,11 @@ Built using Csound sound engine and Qt framework
     }
 
 
-
     Drawer {
            id: drawer
-           width: tuningRow.width + 40
+           width: tuningRow.width + 60
            height: root.height - headerRow.height
-           y: headerRow.height
+           y: headerRow.height // this is wrong, but try
            property int marginLeft: 20
 
            background: Rectangle {anchors.fill:parent; color: Material.backgroundColor.lighter()}
@@ -131,6 +133,7 @@ Built using Csound sound engine and Qt framework
                ComboBox {
                    id: languageComboBox
                    enabled: false
+                   visible: false
 
                    Layout.leftMargin: drawer.marginLeft
 
@@ -192,11 +195,12 @@ Built using Csound sound engine and Qt framework
     Item {
         id: mainColumn
         anchors.fill: parent
+        //anchors.top: headerRow.bottom
+        //anchors.bottomMargin: SafeArea.margins.bottom
         anchors.margins: 5
 
         Item {
             id: buttonsRow
-            //anchors.top: headerRow.bottom
             width: parent.width
             height: Math.max(onButton.implicitHeight, buttonFlow.height)
 
