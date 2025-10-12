@@ -16,17 +16,15 @@ public:
     Q_INVOKABLE void readScore(const QString &scoreLine);
     Q_INVOKABLE void setChannel(QString channel, double value);
 
-
     Q_INVOKABLE void compileOrc(const QString &code);
 
     Q_INVOKABLE double getChannel(const QString &channel);
 
-    Q_INVOKABLE void requestChannel(const QString &channel); // value will be returned via signal newChannelValue
-
+    Q_INVOKABLE void requestChannel(
+        const QString &channel); // value will be returned via signal newChannelValue
 
 signals:
     void newChannelValue(QString channel, double value);
-    
 
 private:
     void *cs; // CsoundObj will be pointed here. Cannot import Objective C CsoundObj here
@@ -34,5 +32,3 @@ private:
 };
 
 #endif // CSOUNDPROXY_H
-
-

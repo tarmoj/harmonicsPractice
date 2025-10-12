@@ -4,10 +4,10 @@
 #include <QThread>
 
 #ifdef Q_OS_IOS
-    #include "csoundproxy.h"
-    #include "ios-screen.h"
+#include "csoundproxy.h"
+#include "ios-screen.h"
 #else
-    #include "csengine.h"
+#include "csengine.h"
 #endif
 
 #ifdef Q_OS_ANDROID
@@ -78,8 +78,6 @@ int main(int argc, char *argv[])
     csoundThread->start();
 
 #endif
-
-
 
     QQmlApplicationEngine engine;
 

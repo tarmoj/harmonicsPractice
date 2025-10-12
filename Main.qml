@@ -181,6 +181,7 @@ Built using Csound sound engine and Qt framework
 
                MenuItem {
                 text: qsTr("Buy me a coffee")
+                visible: Qt.platform.os !== "ios"
                 onTriggered: Qt.openUrlExternally("https://ko-fi.com/tarmojohannes")
                }
 
