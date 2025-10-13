@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--odac -+krtaudio=jac
+-odac
 -d -g
 </CsOptions>
 <CsInstruments>
