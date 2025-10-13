@@ -7,7 +7,7 @@
 #include "csoundproxy.h"
 #include "ios-screen.h"
 #else
-#include "csengine.h"
+//    #include "csengine.h"
 #endif
 
 #ifdef Q_OS_ANDROID
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     app.setOrganizationName("Tarmo Johannes Events and Software");
-    app.setOrganizationDomain("harmonics.tarmmoj.org");
+    app.setOrganizationDomain("harmonics.tarmoj.org");
     app.setApplicationName("Harmonics Practice");
 
 #ifdef Q_OS_ANDROID
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
             // set titlebar color here...
             int androidVersion = QNativeInterface::QAndroidApplication::sdkVersion();
             qDebug() << "Android version: " << androidVersion;
-            if (androidVersion <= 33) {
+            if (androidVersion <= 34) { // Android 14 and below
                 window.callMethod<void>("addFlags", "(I)V", 0x80000000);
                 window.callMethod<void>("clearFlags", "(I)V", 0x04000000);
                 window.callMethod<void>(
@@ -67,23 +67,23 @@ int main(int argc, char *argv[])
     CsoundProxy *cs = new CsoundProxy();
 #else
     // move csound into another thread
-    QThread *csoundThread = new QThread();
-    CsEngine *cs = new CsEngine();
-    cs->moveToThread(csoundThread);
+    // QThread *csoundThread = new QThread();
+    // CsEngine *cs = new CsEngine();
+    // cs->moveToThread(csoundThread);
 
-    QObject::connect(csoundThread, &QThread::finished, cs, &CsEngine::deleteLater);
-    QObject::connect(csoundThread, &QThread::finished, csoundThread, &QThread::deleteLater);
+    // QObject::connect(csoundThread, &QThread::finished, cs, &CsEngine::deleteLater);
+    // QObject::connect(csoundThread, &QThread::finished, csoundThread, &QThread::deleteLater);
 
-    QObject::connect(csoundThread, &QThread::started, cs, &CsEngine::play);
-    csoundThread->start();
+    // QObject::connect(csoundThread, &QThread::started, cs, &CsEngine::play);
+    // csoundThread->start();
 
 #endif
 
     QQmlApplicationEngine engine;
 
-    engine.rootContext()->setContextProperty(
+    /*engine.rootContext()->setContextProperty(
         "csound",
-        cs); // forward c++ object that can be reached form qml by object name "csound" NB! include <QQmlContext>
+        cs);*/ // forward c++ object that can be reached form qml by object name "csound" NB! include <QQmlContext>
 
     const QUrl url(u"qrc:/Main.qml"_qs);
     QObject::connect(
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     QObject *qmlApp = engine.rootObjects().first();
-
+/*
     QObject::connect(qmlApp,
                      SIGNAL(setChannel(QString, double)),
                      cs,
@@ -113,6 +113,6 @@ int main(int argc, char *argv[])
                      SIGNAL(newChannelValue(
                          QString,
                          double))); // connect signal to siganl to allow multithread connection
-
+*/
     return app.exec();
 }

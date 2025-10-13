@@ -22,14 +22,15 @@ DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 #!NB use cmake to build for android qt Qt6! (supports multi-abi)
 ANDROID_VERSION_NAME = $$VERSION
 ANDROID_VERSION_CODE = 5 # build number
+
 #TARGET = "Harmonics\ Practice" # for %%INSERT_APP_NAME%% but that cannot include spaces.
 
 
 SOURCES += main.cpp \
-        csengine.cpp
+        # csengine.cpp
 
 HEADERS += \
-    csengine.h
+    # csengine.h
 
 RESOURCES += resources.qrc
 
@@ -42,15 +43,16 @@ RESOURCES += resources.qrc
 android {
 
   QT += core-private
-  INCLUDEPATH += /home/tarmo/src/csound-6.12.2/include/ /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/
 
-  HEADERS += /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/AndroidCsound.hpp
-  LIBS +=  -L/home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/ -lcsoundandroid -lsndfile -lc++_shared #-loboe
+# INCLUDEPATH += /home/tarmo/src/csound-6.12.2/include/ /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/
 
-    ANDROID_EXTRA_LIBS = \
-        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libsndfile.so \
-        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libcsoundandroid.so \
-        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libc++_shared.so
+#   HEADERS += /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/AndroidCsound.hpp
+#   LIBS +=  -L/home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/ -lcsoundandroid -lsndfile -lc++_shared #-loboe
+
+#     ANDROID_EXTRA_LIBS = \
+#         /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libsndfile.so \
+#         /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libcsoundandroid.so \
+#         /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libc++_shared.so
 
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
