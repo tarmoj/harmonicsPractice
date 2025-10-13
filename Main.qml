@@ -12,6 +12,7 @@ ApplicationWindow {
     height: 640
     visible: true
     color: Material.background
+    property string version: "0.2.3"
     title: qsTr("Harmonics Practice")
 
     property bool isLandscape: root.width>root.height
@@ -65,13 +66,14 @@ ApplicationWindow {
 
     header: ToolBar {
         id: headerRow
-        anchors.topMargin: SafeArea.margins.top
+        height: titleLabel.height + 20 // +20 seems to have no effect
+        //anchors.topMargin: SafeArea.margins.top // not needed when built with QT 6.9.3
 
         Material.background: "transparent"
 
         Label {
             id: titleLabel
-            text: root.title; font.bold: true; font.pointSize: 14
+            text: root.title + " " + version; font.bold: true; font.pointSize: 14
             anchors.centerIn: parent
             horizontalAlignment: Text.AlignHCenter
         }
@@ -116,7 +118,7 @@ Built using Csound sound engine and Qt framework
 
     Drawer {
            id: drawer
-           width: tuningRow.width + 60
+           width: tuningRow.width + 80
            height: root.height - headerRow.height
            y: headerRow.height // this is wrong, but try
            property int marginLeft: 20
@@ -196,8 +198,7 @@ Built using Csound sound engine and Qt framework
     Item {
         id: mainColumn
         anchors.fill: parent
-        //anchors.top: headerRow.bottom
-        //anchors.bottomMargin: SafeArea.margins.bottom
+        anchors.topMargin: 10
         anchors.margins: 5
 
         Item {
