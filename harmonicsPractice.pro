@@ -44,18 +44,22 @@ android {
 
   QT += core-private
 
-# INCLUDEPATH += /home/tarmo/src/csound-6.12.2/include/ /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/
+  INCLUDEPATH += /home/tarmo/src/csound-6.12.2/include/ /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/
 
-#   HEADERS += /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/AndroidCsound.hpp
-#   LIBS +=  -L/home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/ -lcsoundandroid -lsndfile -lc++_shared #-loboe
+  HEADERS += /home/tarmo/src/csound-6.12.2/Android/CsoundAndroid/jni/AndroidCsound.hpp
+  LIBS +=  -L/home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/ -lcsoundandroid -lsndfile -lc++_shared #-loboe
 
-#     ANDROID_EXTRA_LIBS = \
-#         /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libsndfile.so \
-#         /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libcsoundandroid.so \
-#         /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libc++_shared.so
+    ANDROID_EXTRA_LIBS = \
+        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libsndfile.so \
+        /home/tarmo/src/csound-android-6.12.0/CsoundForAndroid/CsoundAndroid/src/main/jniLibs/$$ANDROID_TARGET_ARCH/libcsoundandroid.so \
 
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
+
+    # build with 16 kB pagesize to comply with Google Play requirements
+    android {
+        QMAKE_LFLAGS += -Wl,-z,max-page-size=65536
+    }
 
 } else: linux {
   INCLUDEPATH += /usr/local/include/csound/

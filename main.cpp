@@ -7,7 +7,7 @@
 #include "csoundproxy.h"
 #include "ios-screen.h"
 #else
-//    #include "csengine.h"
+    #include "csengine.h"
 #endif
 
 #ifdef Q_OS_ANDROID
@@ -66,16 +66,16 @@ int main(int argc, char *argv[])
     screen.setTimerDisabled();
     CsoundProxy *cs = new CsoundProxy();
 #else
-    // move csound into another thread
-    // QThread *csoundThread = new QThread();
-    // CsEngine *cs = new CsEngine();
-    // cs->moveToThread(csoundThread);
+    //move csound into another thread
+    QThread *csoundThread = new QThread();
+    CsEngine *cs = new CsEngine();
+    cs->moveToThread(csoundThread);
 
-    // QObject::connect(csoundThread, &QThread::finished, cs, &CsEngine::deleteLater);
-    // QObject::connect(csoundThread, &QThread::finished, csoundThread, &QThread::deleteLater);
+    QObject::connect(csoundThread, &QThread::finished, cs, &CsEngine::deleteLater);
+    QObject::connect(csoundThread, &QThread::finished, csoundThread, &QThread::deleteLater);
 
-    // QObject::connect(csoundThread, &QThread::started, cs, &CsEngine::play);
-    // csoundThread->start();
+    QObject::connect(csoundThread, &QThread::started, cs, &CsEngine::play);
+    csoundThread->start();
 
 #endif
 
